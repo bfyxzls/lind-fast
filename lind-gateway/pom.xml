@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lind-gateway</artifactId>
+
     <dependencies>
         <!--gateway 网关依赖,内置webflux 依赖-->
         <dependency>
@@ -53,6 +54,12 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pig4cloud</groupId>
+            <artifactId>pig-common-seata</artifactId>
+            <version>3.5.1</version>
         </dependency>
     </dependencies>
 
