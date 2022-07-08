@@ -7,11 +7,13 @@
     <groupId>com.lind</groupId>
     <artifactId>lind-fast</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <modules>
-        <module>lind-common</module>
-        <module>lind-gateway</module>
-        <module>lind-dependency</module>
+        <module>lind-common-core</module>
+        <module>lind-fast-demo</module>
+        <module>lind-dependencies</module>
+        <module>lind-common-datasource</module>
+        <module>lind-common-mybatis</module>
     </modules>
 
     <properties>
@@ -42,7 +44,6 @@
         <spring.checkstyle.plugin>0.0.32</spring.checkstyle.plugin>
         <springdoc.version>1.6.6</springdoc.version>
     </properties>
-
     <!-- 以下依赖 全局所有的模块都会引入  -->
     <dependencies>
         <!--配置文件处理器-->
@@ -62,12 +63,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--监控客户端-->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
+
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -84,6 +80,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--lind-fast 公共版本定义，将lind-dependency的pom.xml的依赖包引入到主项目，然后其它子项目可以直接使用，不需要声明版本号-->
+            <dependency>
+                <groupId>com.lind</groupId>
+                <artifactId>lind-dependency</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- spring boot 依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -148,25 +152,6 @@
 
             </plugins>
         </pluginManagement>
-
-
-        <plugins>
-            <!--代码格式插件，默认使用spring 规则-->
-            <plugin>
-                <groupId>io.spring.javaformat</groupId>
-                <artifactId>spring-javaformat-maven-plugin</artifactId>
-                <version>${spring.checkstyle.plugin}</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <inherited>true</inherited>
-                        <goals>
-                            <goal>validate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
 
     </build>
 </project>
