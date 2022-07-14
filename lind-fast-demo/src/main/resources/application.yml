@@ -8,9 +8,20 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/pig_codegen?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    password: ENC(e6ytx260Dh8EfNszc7ktxg==)
+    url: jdbc:mysql://localhost:3306/pig_codegen?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+
+# 加解密根密码
+jasypt:
+  encryptor:
+    password: pig #根密码
 
 
 
-
+mybatis-plus:
+  typeAliasesPackage: com.lind.fast.demo.entity
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.lind.fast.demo.entity
+  configuration:
+    mapUnderscoreToCamelCase: true

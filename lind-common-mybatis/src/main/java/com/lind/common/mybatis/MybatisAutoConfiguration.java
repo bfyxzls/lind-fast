@@ -18,8 +18,8 @@ package com.lind.common.mybatis;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
+import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
 import com.lind.common.mybatis.resolver.SqlFilterArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
