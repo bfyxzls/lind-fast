@@ -1,6 +1,7 @@
 package com.lind.fast.demo;
 
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
+import com.pig4cloud.pig.common.job.annotation.EnableXxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -17,6 +18,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableDynamicDataSource
 @MapperScan(basePackages = {"com.lind.fast.demo.mapper"})
 @Slf4j
+@EnableXxlJob
 public class LindDemoApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(LindDemoApplication.class, args);

@@ -2,13 +2,12 @@ package com.lind.fast.demo.controller;
 
 import cn.hutool.extra.spring.EnableSpringUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lind.common.core.util.MsgUtils;
+import com.lind.common.core.util.I18nUtils;
 import com.lind.common.core.util.R;
 import com.lind.fast.demo.mapper.GeneratorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,7 +23,7 @@ public class TestController {
 
     @GetMapping("hello")
     public R hello() {
-        return R.ok(MsgUtils.getMessage("sys.user.query.error"));
+        return R.ok(I18nUtils.getMessage("sys.user.query.error"));
     }
 
     @GetMapping("ds/{ds}")

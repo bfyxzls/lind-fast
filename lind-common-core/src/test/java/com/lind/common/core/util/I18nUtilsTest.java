@@ -13,14 +13,14 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 @ContextConfiguration(classes = {AutoLindWebMvcConfigurer.class, SpringUtil.class, StandardPBEStringEncryptor.class})
 @Slf4j
-public class MsgUtilsTest {
+public class I18nUtilsTest {
     @Autowired
     StringEncryptor stringEncryptor;
 
     @Test
     public void china() {
         System.out.println(
-                MsgUtils.getMessage("sys.user.update.passwordError"));
+                I18nUtils.getMessage("sys.user.update.passwordError"));
     }
 
     @Test

@@ -15,7 +15,7 @@ import java.util.Locale;
  * @date 2022/3/30
  */
 @UtilityClass
-public class MsgUtils {
+public class I18nUtils {
     private final Locale locale = LocaleContextHolder.getLocale();
 
     /**

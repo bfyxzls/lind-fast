@@ -1,1 +1,1 @@
-MybatisAutoConfiguration
+com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler
