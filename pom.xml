@@ -11,7 +11,7 @@
     <modules>
         <module>lind-common-core</module>
         <module>lind-fast-demo</module>
-        <module>lind-dependencies</module>
+        <module>lind-dependency</module>
         <module>lind-common-datasource</module>
         <module>lind-common-mybatis</module>
         <module>lind-common-job</module>
@@ -156,7 +156,12 @@
                         </execution>
                     </executions>
                 </plugin>
-
+                <!--代码格式插件，默认使用spring 规则-->
+                <plugin>
+                    <groupId>io.spring.javaformat</groupId>
+                    <artifactId>spring-javaformat-maven-plugin</artifactId>
+                    <version>${spring.checkstyle.plugin}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 

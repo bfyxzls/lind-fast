@@ -9,12 +9,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/pig_codegen?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    url: jdbc:mysql://192.168.3.181:3306/pig_codegen?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
 
 xxl:
   job:
     accessToken: demo
-    admin.addresses: http://localhost:5004/xxl-job-admin
+    admin.addresses: http://192.168.3.181:5004/xxl-job-admin
     executor:
       appname: lind
       port: 9971

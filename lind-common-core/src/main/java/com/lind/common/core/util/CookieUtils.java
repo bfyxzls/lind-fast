@@ -15,9 +15,8 @@
  * limitations under the License.
  */
 
-package com.lind.common.util;
+package com.lind.common.core.util;
 
-import org.apache.tomcat.util.http.SameSiteCookies;
 import org.jboss.logging.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -49,7 +48,7 @@ public class CookieUtils {
      * @param httpOnly
      * @param sameSite
      */
-    public static void addCookie(String name, String value, String path, String domain, int maxAge, boolean secure, boolean httpOnly, SameSiteCookies sameSite) {
+    public static void addCookie(String name, String value, String path, String domain, int maxAge, boolean secure, boolean httpOnly, String sameSite) {
 
         // when expiring a cookie we shouldn't set the sameSite attribute; if we set e.g. SameSite=None when expiring a cookie, the new cookie (with maxAge == 0)
         // might be rejected by the browser in some cases resulting in leaving the original cookie untouched; that can even prevent user from accessing their application
@@ -57,7 +56,7 @@ public class CookieUtils {
             sameSite = null;
         }
 
-        boolean secure_sameSite = sameSite == SameSiteCookies.NONE || secure; // when SameSite=None, Secure attribute must be set
+        boolean secure_sameSite = sameSite == "NONE" || secure; // when SameSite=None, Secure attribute must be set
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
         HttpServletResponse response = servletRequestAttributes.getResponse();
@@ -75,14 +74,14 @@ public class CookieUtils {
                     .domain(domain)
                     .path(path)
                     .maxAge(Duration.ofSeconds(maxAge))
-                    .sameSite(sameSite.name())
+                    .sameSite(sameSite)
                     .build();
         }
 
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 
         //老版浏览器
-        if (sameSite == SameSiteCookies.NONE) {
+        if (sameSite == "NONE") {
             addCookie(name, value, path, domain, maxAge, secure, httpOnly, null);
         }
     }
@@ -106,7 +105,7 @@ public class CookieUtils {
         addCookie(name, value, null, null, -1, false, true, null);
     }
 
-    public static void addCookie(String name, String value, boolean secure, SameSiteCookies sameSiteCookies) {
+    public static void addCookie(String name, String value, boolean secure, String sameSiteCookies) {
         addCookie(name, value, null, null, -1, secure, true, sameSiteCookies);
     }
 
@@ -134,7 +133,7 @@ public class CookieUtils {
      * @param httpOnly
      * @param sameSite
      */
-    public static void expireCookie(String cookieName, String path, String domain, boolean secureOnly, boolean httpOnly, SameSiteCookies sameSite) {
+    public static void expireCookie(String cookieName, String path, String domain, boolean secureOnly, boolean httpOnly, String sameSite) {
         addCookie(cookieName, "", path, domain, 0, secureOnly, httpOnly, sameSite);
     }
 

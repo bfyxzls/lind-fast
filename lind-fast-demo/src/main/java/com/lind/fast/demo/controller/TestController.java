@@ -2,8 +2,9 @@ package com.lind.fast.demo.controller;
 
 import cn.hutool.extra.spring.EnableSpringUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lind.common.core.util.I18nUtils;
 import com.lind.common.core.util.R;
+import com.lind.fast.demo.anno.RequestExcel;
+import com.lind.fast.demo.anno.ResponseExcel;
 import com.lind.fast.demo.mapper.GeneratorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +23,13 @@ public class TestController {
     GeneratorMapper generatorMapper;
 
     @GetMapping("hello")
+    @ResponseExcel
     public R hello() {
-        return R.ok(I18nUtils.getMessage("sys.user.query.error"));
+        return R.ok("ok");
     }
 
     @GetMapping("ds/{ds}")
     public R ds(@PathVariable String ds) {
-        return R.ok(generatorMapper.queryAll(null,new Page(1,10), ds));
+        return R.ok(generatorMapper.queryAll(null, new Page(1, 10), ds));
     }
 }
