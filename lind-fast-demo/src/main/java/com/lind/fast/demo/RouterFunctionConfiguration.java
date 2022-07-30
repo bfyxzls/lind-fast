@@ -1,6 +1,7 @@
 package com.lind.fast.demo;
 
 import com.lind.fast.demo.handler.ImageCodeHandler;
+import com.lind.fast.demo.service.HelloService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,4 +33,8 @@ public class RouterFunctionConfiguration {
 		return new ImageCodeHandler();
 	}
 
+	@Bean("helloService")
+	public HelloService helloService(){
+		return new HelloService();
+	}
 }
