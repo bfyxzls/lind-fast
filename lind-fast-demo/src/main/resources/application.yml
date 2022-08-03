@@ -46,3 +46,7 @@ mybatis:
   typeAliasesPackage: com.lind.fast.demo.entity
   configuration:
     mapUnderscoreToCamelCase: true
+# Logger Config
+logging:
+  level:
+    mybatis.mate: debug

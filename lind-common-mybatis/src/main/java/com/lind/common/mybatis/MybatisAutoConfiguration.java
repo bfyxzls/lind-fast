@@ -21,7 +21,6 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
-import com.lind.common.mybatis.interceptor.DataFilterInterceptor;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
 import com.lind.common.mybatis.resolver.SqlFilterArgumentResolver;
 import org.springframework.context.annotation.Bean;
@@ -40,42 +39,39 @@ import java.util.List;
 @Configuration(proxyBeanMethods = false)
 public class MybatisAutoConfiguration implements WebMvcConfigurer {
 
-    /**
-     * SQL 过滤器避免SQL 注入
-     *
-     * @param argumentResolvers
-     */
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new SqlFilterArgumentResolver());
-    }
+	/**
+	 * SQL 过滤器避免SQL 注入
+	 * @param argumentResolvers
+	 */
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+		argumentResolvers.add(new SqlFilterArgumentResolver());
+	}
 
-    /**
-     * 分页插件, 对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
-     */
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-        // 分页
-        mybatisPlusInterceptor.addInnerInterceptor(new PigPaginationInnerInterceptor());
-        // 数据权限
-        mybatisPlusInterceptor.addInnerInterceptor(new DataFilterInterceptor());
-        // 乐观锁
-        mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
-        // 防止全表更新与删除
-        mybatisPlusInterceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+	/**
+	 * 分页插件, 对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
+	 */
+	@Bean
+	public MybatisPlusInterceptor mybatisPlusInterceptor() {
+		MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+		// 分页
+		mybatisPlusInterceptor.addInnerInterceptor(new PigPaginationInnerInterceptor());
 
-        return mybatisPlusInterceptor;
-    }
+		// 乐观锁
+		mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+		// 防止全表更新与删除
+		mybatisPlusInterceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
 
-    /**
-     * 审计字段自动填充
-     *
-     * @return {@link MetaObjectHandler}
-     */
-    @Bean
-    public MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler() {
-        return new MybatisPlusMetaObjectHandler();
-    }
+		return mybatisPlusInterceptor;
+	}
+
+	/**
+	 * 审计字段自动填充
+	 * @return {@link MetaObjectHandler}
+	 */
+	@Bean
+	public MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler() {
+		return new MybatisPlusMetaObjectHandler();
+	}
 
 }

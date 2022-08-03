@@ -16,13 +16,16 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 @EnableDynamicDataSource
-@MapperScan(basePackages = {"com.lind.fast.demo.mapper"})
+@MapperScan(basePackages = { "com.lind.fast.demo.mapper" })
 @Slf4j
 @EnableXxlJob
 public class LindDemoApplication {
-    public static void main(String[] args) {
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(LindDemoApplication.class, args);
-        StringEncryptor stringEncryptor = configurableApplicationContext.getBean(StringEncryptor.class);
-        log.info(stringEncryptor.encrypt("123456"));
-    }
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(LindDemoApplication.class,
+				args);
+		StringEncryptor stringEncryptor = configurableApplicationContext.getBean(StringEncryptor.class);
+		log.info(stringEncryptor.encrypt("123456"));
+	}
+
 }

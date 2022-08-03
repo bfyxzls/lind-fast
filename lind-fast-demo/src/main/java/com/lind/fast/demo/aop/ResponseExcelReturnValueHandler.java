@@ -19,7 +19,7 @@ public class ResponseExcelReturnValueHandler implements HandlerMethodReturnValue
 
 	@Override
 	public boolean supportsReturnType(MethodParameter parameter) {
-		return parameter.getMethodAnnotation(ResponseExcel.class) != null;
+			return parameter.getMethodAnnotation(ResponseExcel.class) != null;
 	}
 
 	@Override
