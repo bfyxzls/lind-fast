@@ -17,8 +17,7 @@
 package com.lind.fast.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.mybatis.helper.datascope.annotation.ActiveScopeField;
-import com.github.mybatis.helper.datascope.annotation.DataScopeSettings;
+import com.lind.common.mybatis.annotation.DataScope;
 import com.lind.fast.demo.entity.TestUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -32,8 +31,10 @@ import java.util.List;
  * @date 2018-07-30
  */
 @Mapper
-@DataScopeSettings(activeScopeFields={@ActiveScopeField("dept_id")})
 public interface TestUserMapper extends BaseMapper<TestUser> {
-    @Select("select u.* from test_user u")
-    List<TestUser> selectTestList();
+
+	@Select("select u.* from test_user u")
+	@DataScope
+	List<TestUser> selectTestList();
+
 }

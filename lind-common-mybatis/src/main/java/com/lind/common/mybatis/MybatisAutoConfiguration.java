@@ -20,7 +20,9 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
+import com.lind.common.mybatis.base.CurrentAuditor;
 import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
+import com.lind.common.mybatis.plugins.DeptInterceptor;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
 import com.lind.common.mybatis.resolver.SqlFilterArgumentResolver;
 import org.springframework.context.annotation.Bean;
@@ -52,13 +54,17 @@ public class MybatisAutoConfiguration implements WebMvcConfigurer {
 	 * 分页插件, 对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
 	 */
 	@Bean
-	public MybatisPlusInterceptor mybatisPlusInterceptor() {
+	public MybatisPlusInterceptor mybatisPlusInterceptor(CurrentAuditor currentAuditor) {
 		MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
 		// 分页
 		mybatisPlusInterceptor.addInnerInterceptor(new PigPaginationInnerInterceptor());
 
+		// 数据权限
+		mybatisPlusInterceptor.addInnerInterceptor(new DeptInterceptor(currentAuditor));
+
 		// 乐观锁
 		mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+
 		// 防止全表更新与删除
 		mybatisPlusInterceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
 

@@ -29,6 +29,8 @@
         <sms.version>2.0.2</sms.version>
         <jaxb.version>2.3.5</jaxb.version>
         <sentinel.version>1.8.4</sentinel.version>
+        <hutool.version>5.8.3</hutool.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -104,6 +106,11 @@
                         <groupId>org.springframework.boot</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>

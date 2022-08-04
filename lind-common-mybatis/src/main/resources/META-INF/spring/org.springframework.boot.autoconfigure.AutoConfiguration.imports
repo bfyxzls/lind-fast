@@ -1,1 +1,2 @@
 com.lind.common.mybatis.MybatisAutoConfiguration
+com.lind.common.mybatis.aspect.DataPermissionAspect

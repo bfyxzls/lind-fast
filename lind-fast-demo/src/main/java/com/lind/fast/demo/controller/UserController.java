@@ -1,5 +1,6 @@
 package com.lind.fast.demo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.mybatis.helper.core.MybatisThreadHelper;
 import com.lind.common.core.util.R;
 import com.lind.common.core.validator.ValidatorUtils;
