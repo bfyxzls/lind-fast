@@ -1,0 +1,7 @@
+com.lind.upms.api.feign.RemoteClientDetailsService
+com.lind.upms.api.feign.RemoteDictService
+com.lind.upms.api.feign.RemoteDeptService
+com.lind.upms.api.feign.RemoteLogService
+com.lind.upms.api.feign.RemoteTokenService
+com.lind.upms.api.feign.RemoteUserService
+com.lind.upms.api.feign.RemoteParamService

@@ -41,6 +41,7 @@ jasypt:
 
 mybatis-plus:
   typeAliasesPackage: com.lind.fast.demo.entity
+  typeHandlersPackage: com.lind.common.mybatis.handler
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.lind.fast.demo.entity

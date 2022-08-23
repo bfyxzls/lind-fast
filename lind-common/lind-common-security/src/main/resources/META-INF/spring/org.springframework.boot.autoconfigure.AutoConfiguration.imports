@@ -1,0 +1,7 @@
+com.lind.common.security.service.PigUserDetailsServiceImpl
+com.lind.common.security.service.PigAppUserDetailsServiceImpl
+com.lind.common.security.service.PigRedisOAuth2AuthorizationService
+com.lind.common.security.service.PigRedisOAuth2AuthorizationConsentService
+com.lind.common.security.component.PigSecurityInnerAspect
+com.lind.common.security.component.PigSecurityMessageSourceConfiguration
+com.lind.common.security.service.PigRemoteRegisteredClientRepository

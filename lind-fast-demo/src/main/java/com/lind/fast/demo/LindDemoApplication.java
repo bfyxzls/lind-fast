@@ -21,11 +21,21 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableXxlJob
 public class LindDemoApplication {
 
+	static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();
+
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(LindDemoApplication.class,
 				args);
 		StringEncryptor stringEncryptor = configurableApplicationContext.getBean(StringEncryptor.class);
 		log.info(stringEncryptor.encrypt("123456"));
+	}
+
+	public static void set(String value) {
+		dic.set(value);
+	}
+
+	public static String get() {
+		return dic.get();
 	}
 
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lind-upms</artifactId>
+        <groupId>com.lind</groupId>
+        <version>1.0.0</version>
+     </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lind-upms-api</artifactId>
+    <description>通用用户权限管理系统公共api模块</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <!--feign 注解依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--core 工具类-->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-core</artifactId>
+        </dependency>
+        <!--mybatis 依赖-->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-mybatis</artifactId>
+        </dependency>
+        <!-- excel 导入导出 https://github.com/pig-mesh/excel-spring-boot-starter -->
+        <dependency>
+            <groupId>com.pig4cloud.excel</groupId>
+            <artifactId>excel-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>

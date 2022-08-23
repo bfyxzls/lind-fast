@@ -33,7 +33,7 @@ import java.util.List;
 @Mapper
 public interface TestUserMapper extends BaseMapper<TestUser> {
 
-	@Select("select u.* from test_user u")
+	@Select("select u.* from test_user u"	)
 	@DataScope
 	List<TestUser> selectTestList();
 

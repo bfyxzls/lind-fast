@@ -1,4 +1,19 @@
 # 低代码框架
+## 关于项目介绍和各模块关系
+* lind-common
+  * lind-common-core
+  * lind-common-datasource
+  * lind-common-feign
+  * lind-common-job
+  * lind-common-log
+  * lind-common-mybatis
+  * lind-common-security
+  * lind-common-swagger
+  * lind-dependency 整个项目的依赖包
+* lind-upms 系统管理模块
+  * lind-upms-api 系统管理公开的接口和类
+  * lind-upms-biz 系统管理系统
+* 
 ## 1 关于项目结构和依赖包
 > maven中避免重复发明轮子的方法，一种是继承，一种是引用。
 * maven中配置引用关系的方法是，如果在`父项目`中使用它，应该将下面代码添加到<dependencyManagement>标记中，如果在`单独项目`中引用，直接使用下面代码即可

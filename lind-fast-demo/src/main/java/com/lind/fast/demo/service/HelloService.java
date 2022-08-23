@@ -1,5 +1,7 @@
 package com.lind.fast.demo.service;
 
+import com.lind.fast.demo.LindDemoApplication;
+
 /**
  * @author lind
  * @date 2022/7/29 16:46
@@ -8,7 +10,8 @@ package com.lind.fast.demo.service;
 public class HelloService {
 
 	public String get() {
-		return "hello world";
+		System.out.println(LindDemoApplication.get());
+		return LindDemoApplication.get();
 	}
 
 }

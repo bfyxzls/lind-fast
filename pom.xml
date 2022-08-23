@@ -9,13 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>lind-common-core</module>
         <module>lind-fast-demo</module>
-        <module>lind-dependency</module>
-        <module>lind-common-datasource</module>
-        <module>lind-common-mybatis</module>
-        <module>lind-common-job</module>
-
+        <module>lind-common</module>
+        <module>lind-upms</module>
     </modules>
 
     <properties>

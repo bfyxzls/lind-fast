@@ -16,9 +16,10 @@
 package com.lind.fast.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.lind.common.mybatis.handler.SensitiveTypeHandler;
 import lombok.Data;
 
 /**
@@ -28,21 +29,21 @@ import lombok.Data;
  * @date 2019-03-31 16:00:20
  */
 @Data
-@TableName("test_user")
+@TableName(value = "test_user", autoResultMap = true)
 public class TestUser {
 
-    /**
-     * 主键
-     */
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+	/**
+	 * 主键
+	 */
+	@TableId(type = IdType.ASSIGN_ID)
+	private Long id;
 
-    /**
-     * 名称
-     */
-    private String name;
+	/**
+	 * 名称
+	 */
+	@TableField(typeHandler = SensitiveTypeHandler.class)
+	private String name;
 
-
-    private Long deptId;
+	private Long deptId;
 
 }

@@ -1,0 +1,3 @@
+com.lind.common.feign.PigFeignAutoConfiguration
+com.lind.common.feign.sentinel.SentinelAutoConfiguration
+com.lind.common.feign.sentinel.handle.GlobalBizExceptionHandler
