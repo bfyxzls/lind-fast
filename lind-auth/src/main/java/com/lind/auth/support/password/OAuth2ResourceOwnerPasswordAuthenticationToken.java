@@ -11,7 +11,7 @@ import java.util.Set;
  * @author jumuning
  * @description 密码授权token信息
  */
-public class OAuth2ResourceOwnerPasswordAuthenticationToken extends OAuth2ResourceOwnerBaseAuthenticationToken {
+public class  OAuth2ResourceOwnerPasswordAuthenticationToken extends OAuth2ResourceOwnerBaseAuthenticationToken {
 
 	public OAuth2ResourceOwnerPasswordAuthenticationToken(AuthorizationGrantType authorizationGrantType,
 			Authentication clientPrincipal, Set<String> scopes, Map<String, Object> additionalParameters) {

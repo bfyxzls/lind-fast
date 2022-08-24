@@ -103,7 +103,7 @@ public class PigTokenEndpoint {
 	 */
 	@GetMapping("/login")
 	public ModelAndView require(ModelAndView modelAndView, @RequestParam(required = false) String error) {
-		modelAndView.setViewName("templates/ftl/login");
+		modelAndView.setViewName("ftl/login");
 		modelAndView.addObject("error", error);
 		return modelAndView;
 	}
@@ -121,7 +121,7 @@ public class PigTokenEndpoint {
 		modelAndView.addObject("state", state);
 		modelAndView.addObject("scopeList", authorizedScopes);
 		modelAndView.addObject("principalName", principal.getName());
-		modelAndView.setViewName("templates/ftl/confirm");
+		modelAndView.setViewName("ftl/confirm");
 		return modelAndView;
 	}
 

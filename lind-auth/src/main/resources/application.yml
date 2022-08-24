@@ -20,7 +20,8 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   redis:
-    host: pig-redis
+    host: localhost
+    database: 1
   freemarker:
     allow-request-override: false
     allow-session-override: false
