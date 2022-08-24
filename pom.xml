@@ -12,6 +12,7 @@
         <module>lind-fast-demo</module>
         <module>lind-common</module>
         <module>lind-upms</module>
+        <module>lind-auth</module>
     </modules>
 
     <properties>
