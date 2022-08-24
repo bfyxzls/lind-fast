@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>MODULES</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="208.0" y="316.3">mdl-lind-upms-biz</node>
+    <node x="-75.0" y="195.5">mdl-lind-common-security</node>
+    <node x="-78.0" y="53.5">mdl-lind-common-swagger</node>
+    <node x="434.0" y="235.5">mdl-lind-common-core</node>
+    <node x="-62.5" y="-10.5">mdl-lind-common-job</node>
+    <node x="192.5" y="215.5">mdl-lind-common-feign</node>
+    <node x="184.5" y="175.5">mdl-lind-common-mybatis</node>
+    <node x="7.5" y="316.3">mdl-lind-upms-api</node>
+    <node x="-62.5" y="235.5">mdl-lind-common-log</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="mdl-lind-common-log" target="mdl-lind-common-mybatis" relationship="MODULE">
+      <point x="0.0" y="10.5" />
+      <point x="0.0" y="279.0" />
+      <point x="353.0" y="279.0" />
+      <point x="353.0" y="186.0" />
+      <point x="75.5" y="0.0" />
+    </edge>
+    <edge source="mdl-lind-common-security" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="75.0" y="0.0" />
+      <point x="96.0" y="206.0" />
+      <point x="96.0" y="254.0" />
+      <point x="-66.0" y="8.0" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-feign" relationship="MODULE">
+      <point x="15.0" y="-10.5" />
+      <point x="15.0" y="10.5" />
+    </edge>
+    <edge source="mdl-lind-common-security" target="mdl-lind-upms-api" relationship="MODULE">
+      <point x="0.0" y="-10.5" />
+      <point x="0.0" y="158.0" />
+      <point x="118.5" y="158.0" />
+      <point x="118.5" y="298.0" />
+      <point x="60.0" y="298.0" />
+      <point x="0.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-log" relationship="MODULE">
+      <point x="15.0" y="10.5" />
+      <point x="275.0" y="390.0" />
+      <point x="-133.0" y="390.0" />
+      <point x="-133.0" y="246.0" />
+      <point x="-62.5" y="0.0" />
+    </edge>
+    <edge source="mdl-lind-common-log" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="62.5" y="0.0" />
+      <point x="96.0" y="246.0" />
+      <point x="96.0" y="254.0" />
+      <point x="-66.0" y="8.0" />
+    </edge>
+    <edge source="mdl-lind-common-feign" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="-67.5" y="0.0" />
+      <point x="96.0" y="226.0" />
+      <point x="96.0" y="254.0" />
+      <point x="-66.0" y="8.0" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-security" relationship="MODULE">
+      <point x="30.0" y="10.5" />
+      <point x="290.0" y="405.0" />
+      <point x="-148.0" y="405.0" />
+      <point x="-148.0" y="158.0" />
+      <point x="-15.0" y="158.0" />
+      <point x="-15.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-api" target="mdl-lind-common-mybatis" relationship="MODULE">
+      <point x="52.5" y="0.0" />
+      <point x="152.0" y="326.8" />
+      <point x="152.0" y="158.0" />
+      <point x="260.0" y="158.0" />
+      <point x="0.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-swagger" relationship="MODULE">
+      <point x="52.0" y="0.0" />
+      <point x="368.0" y="326.8" />
+      <point x="368.0" y="64.0" />
+      <point x="78.0" y="0.0" />
+    </edge>
+    <edge source="mdl-lind-common-mybatis" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="-75.5" y="0.0" />
+      <point x="96.0" y="186.0" />
+      <point x="96.0" y="254.0" />
+      <point x="-66.0" y="8.0" />
+    </edge>
+    <edge source="mdl-lind-common-log" target="mdl-lind-upms-api" relationship="MODULE">
+      <point x="-15.0" y="10.5" />
+      <point x="-15.0" y="298.0" />
+      <point x="60.0" y="298.0" />
+      <point x="0.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="0.0" y="10.5" />
+      <point x="260.0" y="360.0" />
+      <point x="500.0" y="360.0" />
+      <point x="0.0" y="10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-upms-api" relationship="MODULE">
+      <point x="0.0" y="-10.5" />
+      <point x="260.0" y="298.0" />
+      <point x="60.0" y="298.0" />
+      <point x="0.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-mybatis" relationship="MODULE">
+      <point x="-52.0" y="0.0" />
+      <point x="152.0" y="326.8" />
+      <point x="152.0" y="158.0" />
+      <point x="260.0" y="158.0" />
+      <point x="0.0" y="-10.5" />
+    </edge>
+    <edge source="mdl-lind-common-security" target="mdl-lind-common-mybatis" relationship="MODULE">
+      <point x="-75.0" y="0.0" />
+      <point x="-103.0" y="206.0" />
+      <point x="-103.0" y="279.0" />
+      <point x="353.0" y="279.0" />
+      <point x="353.0" y="186.0" />
+      <point x="75.5" y="0.0" />
+    </edge>
+    <edge source="mdl-lind-upms-api" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="0.0" y="10.5" />
+      <point x="60.0" y="360.0" />
+      <point x="500.0" y="360.0" />
+      <point x="0.0" y="10.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.96" showDependencies="true" x="217.1875" y="168.7083333333334" />
+  <SelectedNodes>
+    <node>mdl-lind-common-job</node>
+  </SelectedNodes>
+  <Categories />
+</Diagram>
+
