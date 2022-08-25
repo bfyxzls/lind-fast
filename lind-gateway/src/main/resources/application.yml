@@ -1,0 +1,57 @@
+server:
+  port: 9998
+
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+    gateway:
+        locator:
+          enabled: true
+        routes:
+          # 认证中心
+          - id: lind-auth
+            uri: lb://lind-auth
+            predicates:
+              - Path=/auth/**
+            filters:
+              # 验证码处理
+              - ValidateCodeGatewayFilter
+              # 前端密码解密
+              - PasswordDecoderFilter
+          #UPMS 模块
+          - id: lind-upms-biz
+            uri: lb://lind-upms-biz
+            predicates:
+              - Path=/admin/**
+            filters:
+              # 限流配置
+              - name: RequestRateLimiter
+                args:
+                  key-resolver: '#{@remoteAddrKeyResolver}'
+                  redis-rate-limiter.replenishRate: 100
+                  redis-rate-limiter.burstCapacity: 200
+
+          # 固定路由转发配置 无修改
+          - id: openapi
+            uri: lb://lind-gateway
+            predicates:
+              - Path=/v3/api-docs/**
+            filters:
+              - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/$\{path}/v3/api-docs
+
+  config:
+    import:
+      - nacos:application-dev.yml
+
+
+gateway:
+  encode-key: 'thanks,pig4cloud'
+  ignore-clients:
+    - test
+    - client

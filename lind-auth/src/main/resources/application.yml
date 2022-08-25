@@ -10,10 +10,10 @@ spring:
         server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
-#  config:
-#    import:
-#      - nacos:application-@profiles.active@.yml
-#      - nacos:${spring.application.name}-@profiles.active@.yml
+  config:
+    import:
+      - nacos:application-dev.yml
+
   cache:
     type: redis
   mvc:
@@ -36,10 +36,3 @@ spring:
     prefer-file-system-access: true
     suffix: .ftl
     template-loader-path: classpath:/templates/
-security:
-  oauth2:
-    # 通用放行URL，服务个性化，请在对应配置文件覆盖
-    ignore:
-      urls:
-        - /v3/api-docs
-        - /actuator/**

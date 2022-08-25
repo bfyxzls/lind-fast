@@ -61,7 +61,7 @@ public class PigOAuthRequestInterceptor implements RequestInterceptor {
 			}
 		}
 
-		// 避免请求参数的 query token 无法传递
+		// 每次发起feign请求时，把会把token放到feign请求头里，避免请求参数的 query token 无法传递
 		String token = tokenResolver.resolve(request);
 		if (StrUtil.isBlank(token)) {
 			return;

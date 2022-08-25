@@ -30,7 +30,6 @@
         <jaxb.version>2.3.5</jaxb.version>
         <sentinel.version>1.8.4</sentinel.version>
         <hutool.version>5.8.3</hutool.version>
-
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -103,6 +102,7 @@
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger.core.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-webflux-ui</artifactId>

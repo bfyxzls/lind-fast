@@ -14,28 +14,24 @@
  * limitations under the License.
  */
 
-package com.lind.upms.biz;
+package com.lind.gateway;
 
-import com.lind.common.feign.annotation.EnablePigFeignClients;
-import com.lind.common.security.annotation.EnablePigResourceServer;
-import com.lind.common.swagger.annotation.EnablePigDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author lengleng
- * @date 2018年06月21日 用户统一管理系统
+ * @date 2018年06月21日
+ * <p>
+ * 网关应用
  */
-@EnablePigResourceServer
-@EnablePigFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnablePigDoc
-public class PigAdminApplication {
+public class PigGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PigAdminApplication.class, args);
+		SpringApplication.run(PigGatewayApplication.class, args);
 	}
 
 }

@@ -22,8 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * @author lengleng
- * @date 2022/5/28
+ * 资源服务器toke内省处理器,在资源服务器上对token进行解析处理
  */
 @Slf4j
 @RequiredArgsConstructor

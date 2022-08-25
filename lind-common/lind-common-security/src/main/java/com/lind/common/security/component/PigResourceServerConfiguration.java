@@ -49,7 +49,7 @@ public class PigResourceServerConfiguration {
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+		permitAllUrl.getUrls().add("/swagger-ui.html");
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
 				.antMatchers(ArrayUtil.toArray(permitAllUrl.getUrls(), String.class)).permitAll().anyRequest()
 				.authenticated())

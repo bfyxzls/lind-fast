@@ -31,8 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author caiqy
- * @date 2020.05.15
+ * token处理，从当前http请求头中，拿到当前的token.
  */
 public class PigBearerTokenExtractor implements BearerTokenResolver {
 

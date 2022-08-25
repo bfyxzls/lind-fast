@@ -1,6 +1,7 @@
 package com.lind.fast.demo;
 
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
+import com.lind.common.swagger.annotation.EnablePigDoc;
 import com.pig4cloud.pig.common.job.annotation.EnableXxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
@@ -19,6 +20,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @MapperScan(basePackages = { "com.lind.fast.demo.mapper" })
 @Slf4j
 @EnableXxlJob
+@EnablePigDoc
 public class LindDemoApplication {
 
 	static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();

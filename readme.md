@@ -162,3 +162,195 @@ edf103f27075: Pushed
 ```
 * 其它问题
 如果你的docker:build失败，提示你的基础镜像不存在，我们可以把基础镜像添加到harbor中，模拟成为harbor中的镜像就可以了
+
+# pig介绍
+* 源码下载：https://gitee.com/log4j/pig
+* 项目组件：nacos(服务注册与发现，配置中心)、gateway （业务网关）、loadBalancer(负载均衡)、Sentinel （限流、降级和熔断）、openfeign(服务调用)
+> 项目分了多个服务，其中固定四个服务分别是： pig-register，pig-gateway，pig-auth，pig-upms ，pig-common 这也是项目启动顺序.
+
+## 一、pig-register
+此服务主要是模块启动配置类，以及nacos服务相关接口。
+Nacos 承担整个 Spring Cloud 的服务发现、配置管理部分的实现。 是整个开发过程中强依赖，启动微服务业务要去检查 Nacos Server 是否已经启动，解压安装的方式变的非常不便
+1、启动类
+```
+
+/**
+ * @author nacos
+ * <p>
+ * nacos console 源码运行，方便开发 生产从官网下载zip最新版集群配置运行
+ */
+@Slf4j
+@EnableScheduling 
+@SpringBootApplication
+public class PigNacosApplication {
+
+	public static void main(String[] args) {
+		if (initEnv()) {
+			SpringApplication.run(PigNacosApplication.class, args);
+		}
+	}
+
+	/**
+	 * 初始化运行环境
+	 */
+	private static boolean initEnv() {
+		System.setProperty(ConfigConstants.STANDALONE_MODE, "true");
+		System.setProperty(ConfigConstants.AUTH_ENABLED, "false");
+		System.setProperty(ConfigConstants.LOG_BASEDIR, "logs");
+		System.setProperty(ConfigConstants.LOG_ENABLED, "false");
+		System.setProperty("server.port","9527");
+		return true;
+	}
+
+}
+```
+看此启动类运行即可启动，并且会初始化运行环境，包括
+```
+String AUTH_ENABLED = “nacos.core.auth.enabled” //是否开启认证
+String LOG_BASEDIR = “server.tomcat.basedir” //日志目录
+String LOG_ENABLED = “server.tomcat.accesslog.enabled” //access_log日志开关
+```
+
+2、配置类ConsoleConfig
+这个配置类在程序启动的时候，会把naming、console（自身）和config下server包的 相关接口 都缓存到了“ControllerMethodsCache”的一个map中。
+
+* HealthController（console健康信息）：检测Nacos是否正常
+* NamespaceController（命名空间服务）：命名空间查询、创建和删除编辑
+* PermissionController（权限操作相关）：根据角色查询、新增和删除权限
+* RoleController（角色操作相关）、
+* UserController（用户相关）
+* ServerStateController（nacos服务状态）：获取nacos服务的standalone_mode、function_mode和version等信息
+* CatalogController：根据命名空间id和服务名称查询服务详情和服务对应的集群信息
+* ClusterController（集群信息相关）：更新集群信息，底层使用到了consistency模块
+* InstanceController：实例注册、更新、移除和心跳检测
+* ConfigController(软负载客户端发布数据专用控制器)：订阅或配置的客户端信息
+
+## 二、pig-gateway
+微服务架构存在多个服务项目，在项目开发中不可能让前端不停置换调用服务和接口，所以和出现了网关组件，保证前端直接调用网关可以分配到对应的服务接口。
+网关不止提供对外统一接口，而且还可以做统一流量控制、熔断降级等处理，通过路由和过滤器配置作用所有的微服务。
+网关三大核心：路由、断言和过滤
+
+* 路由：构建网关的基本模块，由ID、目标URI、一系列断言和过滤器组成，断言为true则匹配该路由；
+* 断言：开发人员匹配http请求中的所有内容；
+* 过滤：过滤器的生命周期只有两个：pre和post
+```
+    pre：参数考验、权限校验、流量监控、日志输出、协议转换
+    post：响应内容、响应头修改、日志输出、流量监控
+    过滤器从从作用范围可分为两种：GatewayFilter 与 GlobalFilter；
+    局部过滤器（GatewayFilter），是针对单个路由的过滤器。可以对访问的URL过滤，进行切面处理；
+    全局过滤器（GlobalFilter）作用于所有路由，Spring Cloud Gateway 定义了Global Filter接口，用户可以自定义实现自己的Global Filter。通过全局过滤器可以实现对权限的统一校验，安全性验证等功能，并且全局过滤器也是程序员使用比较多的过滤器。
+``` 
+配置下：
+```yml
+cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        # 认证中心
+        - id: pig-auth
+          uri: lb://pig-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+             - ValidateCodeGatewayFilter
+            # 前端密码解密
+             - PasswordDecoderFilter
+        #UPMS 模块
+        - id: pig-upms-biz
+          uri: lb://pig-upms-biz
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}' //使用SpEL按名称引用bean
+                redis-rate-limiter.replenishRate: 100 //允许用户每秒处理多少个请求
+                redis-rate-limiter.burstCapacity: 200 //令牌桶的容量，允许在一秒钟内完成的最大请求数
+```
+## 三、pig-auth
+主要用来处理授权服务，用户前后端分离，实现用户登陆，获取token，用户授权配置。
+用户登陆成功和失败会做对应的处理，发送日志
+```
+public class PigAuthenticationSuccessEventHandler extends AbstractAuthenticationSuccessEventHandler {
+
+/**
+ * 处理登录成功方法
+ * <p>
+ * 获取到登录的authentication 对象
+ * @param authentication 登录对象
+ */
+@Override
+public void handle(Authentication authentication) {
+	log.info("用户：{} 登录成功", authentication.getPrincipal());
+	SecurityContextHolder.getContext().setAuthentication(authentication);
+	SysLog logVo = SysLogUtils.getSysLog();
+	logVo.setTitle("登录成功");
+	// 发送异步日志事件
+	Long startTime = System.currentTimeMillis();
+	Long endTime = System.currentTimeMillis();
+	logVo.setTime(endTime - startTime);
+	logVo.setCreateBy(authentication.getName());
+	logVo.setUpdateBy(authentication.getName());
+	SpringContextHolder.publishEvent(new SysLogEvent(logVo));
+}
+
+
+public class PigAuthenticationFailureEventHandler extends AbstractAuthenticationFailureEventHandler {
+
+	/**
+	 * 处理登录失败方法
+	 * <p>
+	 * @param authenticationException 登录的authentication 对象
+	 * @param authentication 登录的authenticationException 对象
+	 */
+	@Override
+	public void handle(AuthenticationException authenticationException, Authentication authentication) {
+		log.info("用户：{} 登录失败，异常：{}", authentication.getPrincipal(), authenticationException.getLocalizedMessage());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		SysLog logVo = SysLogUtils.getSysLog();
+		logVo.setTitle("登录失败");
+		logVo.setType(LogTypeEnum.ERROR.getType());
+		logVo.setException(authenticationException.getMessage());
+		// 发送异步日志事件
+		Long startTime = System.currentTimeMillis();
+		Long endTime = System.currentTimeMillis();
+		logVo.setTime(endTime - startTime);
+		logVo.setCreateBy(authentication.getName());
+		logVo.setUpdateBy(authentication.getName());
+		SpringContextHolder.publishEvent(new SysLogEvent(logVo));
+	}
+
+```
+## 四、pig-upms
+用户登陆后，用户、菜单和角色权限管理，实现用户模块的开发服务，用户还可以进入开发平台模块直接生成controller，service代码和mybatisPlus xml
+![6b4c526b7afd4ca0b8a6c80b5d7adf37.png](./assets/readme-1661327981912.png)
+## 五、pig-common：
+系统共用模块，里面包含了 公共工具类核心包core、数据源datasource、feign调用、定时任务job、日志服务log、mybaticsPlus、安全工具类security、swagger使用
+![d5876e8594d6473283ba553dcf41a768.png](./assets/readme-1661328018291.png)
+以上就为此次源码最重要的几个模块，框架复杂度主要在启动上，每次都要依次把pig-register，pig-gateway，pig-auth，pig-upms 服务的application启动起来。
+但是项目的代码封装都很好用，满足大部门的需求，而且测试工具swagger也很好用，可直接找到接口做联调。
+代码中最常用到的就是查询LambdaQueryWrapper,可直接做in,notIn，like,和orderBY等操作的数据，例如：
+```
+LambdaQueryWrapper<Guest> guestWrapper=Wrappers.lambdaQuery();
+if(StringUtils.isNotBlank(name)){
+    guestWrapper.like(Guest::getName,name);
+}
+if(StringUtils.isNotBlank(phone)){
+    guestWrapper.eq(Guest::getPhone,phone);
+}
+guestWrapper.in(Guest::getId,Arrays.asList(111,222));
+guestWrapper.orderByDesc(Guest::getSort);
+aaService.list(guestWrapper);
+```
+因为封装方法默认做了为空不做处理的操作，所以对于编辑数据为空的操作可以使用 UpdateWrapper,如下：
+```
+UpdateWrapper<Station> stationWrapper=new UpdateWrapper<>();		 	 
+stationWrapper.lambda().eq(Station::getId,id);	
+stationWrapper.set("place",place);
+stationWrapper.set("number",null);
+boolean flag=stationService.update(pickRecordWrapper);
+
+```

@@ -30,10 +30,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author lengleng
- * @date 2022-06-04
- * <p>
- * 资源服务注解
+ * 资源服务注解,只是个注解的组合，方便使用
  */
 @Documented
 @Inherited

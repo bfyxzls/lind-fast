@@ -59,7 +59,7 @@ public class PermitAllUrlProperties implements InitializingBean {
 		map.keySet().forEach(info -> {
 			HandlerMethod handlerMethod = map.get(info);
 
-			// 获取方法上边的注解 替代path variable 为 *
+			// 获取方法上边的注解 替代path variable 为 *，主要也是灵活控制白名单，通过在方法上添加注解来实现白名单功能
 			Inner method = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), Inner.class);
 			Optional.ofNullable(method).ifPresent(inner -> info.getPatternsCondition().getPatterns()
 					.forEach(url -> urls.add(ReUtil.replaceAll(url, PATTERN, "*"))));

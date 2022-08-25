@@ -36,19 +36,21 @@
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-core</artifactId>
-            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-swagger</artifactId>
         </dependency>
         <!--数据源-->
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-datasource</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
         <!--orm-->
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-mybatis</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>

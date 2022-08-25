@@ -25,6 +25,7 @@ import io.swagger.v3.oas.models.security.Scopes;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.ServiceInstance;
@@ -54,7 +55,8 @@ public class SwaggerAutoConfiguration {
 
 	private final SwaggerProperties swaggerProperties;
 
-	private final ServiceInstance serviceInstance;
+	@Autowired(required = false)
+	private ServiceInstance serviceInstance;
 
 	@Bean
 	public OpenAPI springOpenAPI() {
@@ -63,8 +65,10 @@ public class SwaggerAutoConfiguration {
 		openAPI.schemaRequirement(HttpHeaders.AUTHORIZATION, this.securityScheme());
 		// servers
 		List<Server> serverList = new ArrayList<>();
-		String path = swaggerProperties.getServices().get(serviceInstance.getServiceId());
-		serverList.add(new Server().url(swaggerProperties.getGateway() + "/" + path));
+		if (serviceInstance != null && swaggerProperties.getServices() != null) {
+			String path = swaggerProperties.getServices().get(serviceInstance.getServiceId());
+			serverList.add(new Server().url(swaggerProperties.getGateway() + "/" + path));
+		}
 		openAPI.servers(serverList);
 		return openAPI;
 	}

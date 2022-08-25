@@ -13,6 +13,7 @@
         <module>lind-common</module>
         <module>lind-upms</module>
         <module>lind-auth</module>
+        <module>lind-gateway</module>
     </modules>
 
     <properties>
