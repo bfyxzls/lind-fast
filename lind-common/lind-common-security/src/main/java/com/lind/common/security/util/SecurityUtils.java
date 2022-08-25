@@ -27,6 +27,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 安全工具类
@@ -41,6 +42,18 @@ public class SecurityUtils {
 	 */
 	public Authentication getAuthentication() {
 		return SecurityContextHolder.getContext().getAuthentication();
+	}
+
+	/**
+	 * 当前用户名.
+	 * @return
+	 */
+	public String getUserName() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (Optional.ofNullable(authentication).isPresent()) {
+			return authentication.getName();
+		}
+		return null;
 	}
 
 	/**

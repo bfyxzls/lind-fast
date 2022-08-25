@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.extension.parser.JsqlParserSupport;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.lind.common.mybatis.util.DPHelper;
-import com.lind.common.mybatis.base.CurrentAuditor;
+import com.lind.common.mybatis.audit.CurrentAuditor;
 import lombok.RequiredArgsConstructor;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;

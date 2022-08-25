@@ -15,18 +15,18 @@
   </nodes>
   <notes />
   <edges>
+    <edge source="mdl-lind-common-security" target="mdl-lind-common-core" relationship="MODULE">
+      <point x="75.0" y="0.0" />
+      <point x="96.0" y="206.0" />
+      <point x="96.0" y="254.0" />
+      <point x="-66.0" y="8.0" />
+    </edge>
     <edge source="mdl-lind-common-log" target="mdl-lind-common-mybatis" relationship="MODULE">
       <point x="0.0" y="10.5" />
       <point x="0.0" y="279.0" />
       <point x="353.0" y="279.0" />
       <point x="353.0" y="186.0" />
       <point x="75.5" y="0.0" />
-    </edge>
-    <edge source="mdl-lind-common-security" target="mdl-lind-common-core" relationship="MODULE">
-      <point x="75.0" y="0.0" />
-      <point x="96.0" y="206.0" />
-      <point x="96.0" y="254.0" />
-      <point x="-66.0" y="8.0" />
     </edge>
     <edge source="mdl-lind-upms-biz" target="mdl-lind-common-feign" relationship="MODULE">
       <point x="15.0" y="-10.5" />
@@ -67,18 +67,18 @@
       <point x="-15.0" y="158.0" />
       <point x="-15.0" y="-10.5" />
     </edge>
+    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-swagger" relationship="MODULE">
+      <point x="52.0" y="0.0" />
+      <point x="368.0" y="326.8" />
+      <point x="368.0" y="64.0" />
+      <point x="78.0" y="0.0" />
+    </edge>
     <edge source="mdl-lind-upms-api" target="mdl-lind-common-mybatis" relationship="MODULE">
       <point x="52.5" y="0.0" />
       <point x="152.0" y="326.8" />
       <point x="152.0" y="158.0" />
       <point x="260.0" y="158.0" />
       <point x="0.0" y="-10.5" />
-    </edge>
-    <edge source="mdl-lind-upms-biz" target="mdl-lind-common-swagger" relationship="MODULE">
-      <point x="52.0" y="0.0" />
-      <point x="368.0" y="326.8" />
-      <point x="368.0" y="64.0" />
-      <point x="78.0" y="0.0" />
     </edge>
     <edge source="mdl-lind-common-mybatis" target="mdl-lind-common-core" relationship="MODULE">
       <point x="-75.5" y="0.0" />
@@ -126,7 +126,7 @@
       <point x="0.0" y="10.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Compact" zoom="0.96" showDependencies="true" x="217.1875" y="168.7083333333334" />
+  <settings layout="Hierarchic Compact" zoom="0.96" showDependencies="true" x="395.64583333333337" y="269.52083333333337" />
   <SelectedNodes>
     <node>mdl-lind-common-job</node>
   </SelectedNodes>

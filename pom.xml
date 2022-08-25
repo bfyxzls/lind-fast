@@ -11,9 +11,7 @@
     <modules>
         <module>lind-fast-demo</module>
         <module>lind-common</module>
-        <module>lind-upms</module>
-        <module>lind-auth</module>
-        <module>lind-gateway</module>
+        <module>lind-common-service</module>
     </modules>
 
     <properties>

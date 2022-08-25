@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
-import com.lind.common.mybatis.base.CurrentAuditor;
+import com.lind.common.mybatis.audit.CurrentAuditor;
 import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
 import com.lind.common.mybatis.plugins.DeptInterceptor;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
