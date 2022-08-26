@@ -1,13 +1,13 @@
 package com.lind.fast.demo;
 
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
-import com.lind.common.swagger.annotation.EnablePigDoc;
-import com.pig4cloud.pig.common.job.annotation.EnableXxlJob;
+import com.lind.fast.demo.config.AuthProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
@@ -17,10 +17,11 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 @EnableDynamicDataSource
+@EnableConfigurationProperties(AuthProperties.class) // 开启AuthProperties配置bean
 @MapperScan(basePackages = { "com.lind.fast.demo.mapper" })
 @Slf4j
-@EnableXxlJob
-@EnablePigDoc
+// @EnableXxlJob
+// @EnablePigDoc
 public class LindDemoApplication {
 
 	static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();

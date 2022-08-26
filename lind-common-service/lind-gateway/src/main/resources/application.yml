@@ -37,6 +37,10 @@ spring:
                   redis-rate-limiter.replenishRate: 100
                   redis-rate-limiter.burstCapacity: 200
 
+          - id: lind-fast-demo
+            uri: lb://lind-fast-demo
+            predicates:
+              - Path=/demo/**
           # 固定路由转发配置 无修改
           - id: openapi
             uri: lb://lind-gateway

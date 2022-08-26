@@ -52,7 +52,7 @@ public class PigRequestGlobalFilter implements GlobalFilter, Ordered {
 	 */
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// 1. 清洗请求头中from 参数
+		// 1. 清洗请求头中from 参数,这是网关应该做的事，从前端访问后端会经过网关，所以清洗参数是网关的职责
 		ServerHttpRequest request = exchange.getRequest().mutate()
 				.headers(httpHeaders -> httpHeaders.remove(SecurityConstants.FROM)).build();
 

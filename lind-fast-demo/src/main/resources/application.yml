@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: @artifactId@
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -37,7 +45,9 @@ jasypt:
   encryptor:
     password: pig #根密码
 
-
+auth:
+  name: lind-local
+  date: 2017-9-26
 
 mybatis-plus:
   typeAliasesPackage: com.lind.fast.demo.entity
