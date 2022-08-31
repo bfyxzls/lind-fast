@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
  * @author lengleng
  * @date 2020/7/31
  * <p>
- * 验证码配置类
+ * 验证码配置类，不需要再写spring.factories了
  */
-@Configuration(proxyBeanMethods = false)
+@Configuration(proxyBeanMethods = false)//proxyBeanMethods = false,springboot2.2之后的默认值，提高Spring启动速度
 @EnableConfigurationProperties(CaptchaProperties.class)
 public class CaptchaAutoConfiguration {
 

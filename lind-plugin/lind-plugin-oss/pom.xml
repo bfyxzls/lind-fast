@@ -59,7 +59,7 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- mica-auto -->
+        <!-- mica-auto 目前最新的2.3版本也支持Spring Boot 2.7之后推荐使用的 org.springframework.boot.autoconfigure.AutoConfiguration.imports 配置文件的自动生成。-->
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-auto</artifactId>

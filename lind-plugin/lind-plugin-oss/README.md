@@ -15,9 +15,9 @@
 - 方便在 web 环境下使用 `oss` ，已上传至 maven 仓库
 ```xml
 <dependency>
-    <groupId>com.pig4cloud.plugin</groupId>
-    <artifactId>oss-spring-boot-starter</artifactId>
-    <version>1.0.5</version>
+    <groupId>com.lind</groupId>
+    <artifactId>lind-plugin-oss</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
