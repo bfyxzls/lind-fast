@@ -7,13 +7,49 @@
   * lind-common-job
   * lind-common-log
   * lind-common-mybatis
-  * lind-common-security
+  * lind-common-security 安全组件，除了有一些认证与授权的注解外，还包含了feign调用biz服务的声明，对UserDetailsService里loadUserByUsername的实现等
   * lind-common-swagger
   * lind-dependency 整个项目的依赖包
-* lind-upms 系统管理模块
-  * lind-upms-api 系统管理公开的接口和类
-  * lind-upms-biz 系统管理系统
-* 
+* lind-common-service
+  * lind-auth 认证服务，直接提供了简单的认证接口和界面，支持restFul方式的认证，直接返回token 
+  * lind-xxl-job-admin 这是任务调度组件xxl-job的实现
+  * lind-upms 系统管理模块
+    * lind-upms-api 系统管理公开的接口和类
+    * lind-upms-biz 系统管理系统
+## feign请求带上token
+* PigOAuthRequestInterceptor实现了RequestInterceptor拦截器，拦截feign的请求
+* PigOAuthRequestInterceptor里注入BearerTokenResolver解析器，用来从header中将token解释出来
+* PigOAuthRequestInterceptor中通过正则表达式，对token进行有效性校验
+
+## starter包的说明
+* META-INF/spring.factories  将需要自动注入的bean放到里面去
+* META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports 和上面的文件功能一下，它更加直观
+* META-INF/spring-devtools.properties ide中的任何打开的项目都会使用“restart”类加载器加载，任何常规.jar文件将使用“base”类加载器加载。 如果你在多模块项目上工作，但不是每个模块都导入到ide中，则可能需要自定义配置。 为此，你可以创建一个meta-inf/spring-devtools.properties文件,spring-devtools.properties文件可以包含restart.exclude. 和restart.include. 前缀的属性。 include元素是应该被放入“restart”类加载器的项目，exclude元素是应该放入“base”类加载器的项目
+* META-INF/spring-configuration-metadata.json 在引用starter包后，在开发人员的IDE工具使用个人编写的配置读取很有效的在application.properties或application.yml文件下完成提示。
+* META-INF/additional-spring-configuration-metadata.json 这个是普通的配置信息注释
+> 注意：上面说的两个源数据注释json文件，是在打出的jar包里的META-INF里出现，在源项目中是没有的
+```
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-configuration-processor</artifactId>
+  <optional>true</optional>
+</dependency>
+```
+不过，这里还有个前提，你在写配置属性类的时候，有好好写注释，那么自动提示就都会带上了,如下代码
+```
+@ConfigurationProperties("swagger")
+public class SwaggerProperties {
+ 
+    /**
+     * 标题
+     **/
+    private String title = "";
+    /**
+     * 描述
+     **/
+    private String description = "";
+}
+```
 ## 1 关于项目结构和依赖包
 > maven中避免重复发明轮子的方法，一种是继承，一种是引用。
 * maven中配置引用关系的方法是，如果在`父项目`中使用它，应该将下面代码添加到<dependencyManagement>标记中，如果在`单独项目`中引用，直接使用下面代码即可

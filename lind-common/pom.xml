@@ -27,5 +27,6 @@
         <module>lind-common-swagger</module>
         <module>lind-common-log</module>
         <module>lind-common-seata</module>
+
     </modules>
 </project>

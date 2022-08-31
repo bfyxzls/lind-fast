@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <optional>true</optional><!-- 子模块不直接引用，除非显式引用了spring-boot-configuration-processor包依赖-->
         </dependency>
         <!--配置文件加解密-->
         <dependency>

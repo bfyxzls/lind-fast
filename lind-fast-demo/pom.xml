@@ -97,6 +97,12 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+        <!-- 插件 -->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-excel</artifactId>
+            <version>2.7.0</version>
+        </dependency>
     </dependencies>
 
     <build>

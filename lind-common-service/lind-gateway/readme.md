@@ -6,5 +6,4 @@
 * 全局日志，对经过网关的请求进行日志跟踪，可以一定程度上记录慢请求日志
 * 全局限流，根据URL请求的访问频率进行限制
 * 全局参数解密，为了传输中信息的安全，除了https之外，有时前端会把个人信息进行加密，在网关层可以对它们进行统一的解密处理
-*
-插件路由，我们可以动态向网关添加一些功能性的插件，它可以是http的服务，通过RouterFunction进行注册，通过HandlerFunction进行服务的实现，通过实现AbstractGatewayFilterFactory过滤器工厂来对插件统一校验
+* 插件路由，我们可以动态向网关添加一些功能性的插件，它可以是http的服务，通过RouterFunction进行注册，通过HandlerFunction进行服务的实现，通过实现AbstractGatewayFilterFactory过滤器工厂来对插件统一校验

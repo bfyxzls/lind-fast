@@ -20,8 +20,8 @@
 		<h2 class="form-signin-heading" align="center">统一认证系统</h2>
 		<input type="text" name="client_id" class="form-control" value="pig" placeholder="所属客户端">
 		<input type="text" name="grant_type" class="form-control" value="password" placeholder="所属客户端">
-		<input type="text" name="username" class="form-control form-margin-top" placeholder="账号" required autofocus>
-		<input type="text" name="password" class="form-control" placeholder="密码" required>
+		<input type="text" name="username" class="form-control form-margin-top" placeholder="账号" value="admin" required autofocus>
+		<input type="text" name="password" class="form-control" placeholder="密码" value="123456" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">sign in</button>
         <#if error??>
 			<span style="color: red; ">${error}</span>
