@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.lind.plugin.fastdfs.FdfsAutoConfiguration
+    com.lind.plugin.captcha.fastdfs.FdfsAutoConfiguration
