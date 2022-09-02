@@ -1,0 +1,2 @@
+TraceDubboProviderFilter=com.lind.plugin.log.trace.instrument.dubbo.provider.TraceDubboProviderFilter
+TraceDubboConsumerFilter=com.lind.plugin.log.trace.instrument.dubbo.consumers.TraceDubboConsumerFilter

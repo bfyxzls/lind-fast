@@ -10,7 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lind-fast-demo</artifactId>
-
+    <properties>
+        <lind-plugin-version>1.0.1</lind-plugin-version>
+    </properties>
     <dependencies>
         <!--注册中心客户端-->
         <dependency>
@@ -101,8 +103,31 @@
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-plugin-excel</artifactId>
-            <version>2.7.0</version>
+            <version>${lind-plugin-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-captcha</artifactId>
+            <version>${lind-plugin-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-oss</artifactId>
+            <version>${lind-plugin-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-anti-reptile</artifactId>
+            <version>${lind-plugin-version}</version>
+        </dependency>
+
+        <!-- 数据库文档生成器-->
+        <dependency>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>

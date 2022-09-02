@@ -2,19 +2,28 @@ package com.lind.fast.demo.controller;
 
 import cn.hutool.extra.spring.EnableSpringUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lind.common.core.captcha.ArithmeticCaptcha;
 import com.lind.common.core.util.R;
+import com.lind.common.oss.service.OssTemplate;
 import com.lind.fast.demo.config.AuthProperties;
 import com.lind.fast.demo.mapper.GeneratorMapper;
+import com.lind.plugin.captcha.core.ArithmeticCaptcha;
+import com.lind.plugin.captcha.core.base.Captcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.io.IOException;
 
 /**
  * @author lind
@@ -30,6 +39,7 @@ public class TestController {
 
 	@Autowired
 	AuthProperties authProperties;
+
 
 	@GetMapping("hello")
 	@PreAuthorize("@helloService.get()")
@@ -59,5 +69,29 @@ public class TestController {
 		captcha.out(os);
 		return os.toByteArray();
 	}
+
+	@RequestMapping("/captcha")
+	public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 设置请求头为输出图片类型
+		response.setContentType("image/gif");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+
+		// 三个参数分别为宽、高、位数
+		ArithmeticCaptcha specCaptcha = new ArithmeticCaptcha(130, 48, 2);
+		// 设置字体
+		specCaptcha.setFont(new Font("Verdana", Font.PLAIN, 32)); // 有默认字体，可以不用设置
+		// 设置类型，纯数字、纯字母、字母数字混合
+		specCaptcha.setCharType(Captcha.TYPE_ONLY_NUMBER);
+
+		// 验证码存入session
+		request.getSession().setAttribute("captcha", specCaptcha.text().toLowerCase());
+
+		// 输出图片流
+		specCaptcha.out(response.getOutputStream());
+	}
+
+
 
 }

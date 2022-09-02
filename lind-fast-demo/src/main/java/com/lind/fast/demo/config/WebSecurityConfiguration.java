@@ -40,7 +40,9 @@ public class WebSecurityConfiguration {
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
-				.antMatchers("/excel/**","/code","/codes","/doc.html","/v3/**","/swagger-ui/**","/swagger-ui**", "/token/*", "/hello", "/user/**").permitAll()// 开放自定义的部分端点
+				.antMatchers("/anti-reptile/validate","/plugin/**","/upload**", "/captcha", "/excel/**", "/code", "/codes", "/doc.html", "/v3/**",
+						"/swagger-ui/**", "/swagger-ui**", "/token/*", "/hello", "/user/**")
+				.permitAll()// 开放自定义的部分端点
 				.anyRequest().authenticated()).headers().frameOptions().sameOrigin()// 避免iframe同源无法登录
 				.and().apply(new FormIdentityLoginConfigurer()); // 表单登录个性化
 		// 处理 UsernamePasswordAuthenticationToken

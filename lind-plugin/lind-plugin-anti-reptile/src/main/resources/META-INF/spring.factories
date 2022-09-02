@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.lind.plugin.anti_reptile.config.AntiReptileAutoConfig,\
+com.lind.plugin.anti_reptile.instrument.feign.FeignClientAutoConfiguration

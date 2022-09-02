@@ -390,3 +390,9 @@ stationWrapper.set("number",null);
 boolean flag=stationService.update(pickRecordWrapper);
 
 ```
+# 版本升级说明
+> lind-fast模块包括了lind-common,lind-common-service的子模块，它们的版本号统一；而插件类lind-plugin组件和子组件版本号统一；这两块部署需要分开进行。
+* 命令行执行 mvn versions:set -DnewVersion=1.5.3 //更新了hbase的update，如果不存在，不去插入新数据
+* 提交 mvn versions:commit //提交，删除多余的pom.xml.versionsBackup
+* mvn deploy根项目
+

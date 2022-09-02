@@ -1,0 +1,15 @@
+# Auto Configuration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.lind.plugin.log.trace.TraceAutoConfiguration,\
+com.lind.plugin.log.trace.instrument.servlet.TraceServletConfiguration,\
+com.lind.plugin.log.trace.instrument.reactive.TraceReactiveConfiguration,\
+com.lind.plugin.log.trace.instrument.gateway.TraceGatewayAutoConfiguration,\
+com.lind.plugin.log.trace.instrument.feign.TraceFeignClientAutoConfiguration,\
+com.lind.plugin.log.trace.instrument.zuul.TraceZuulAutoConfiguration,\
+com.lind.plugin.log.trace.instrument.resttemplate.TraceRestTemplateConfiguration,\
+com.lind.plugin.log.trace.instrument.dubbo.TraceDubboConfiguration
+
+# Environment Post Processor
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.lind.plugin.log.trace.processor.TraceEnvironmentPostProcessor,\
+com.lind.plugin.log.trace.instrument.dubbo.TraceDubboEnvironmentPostProcessor

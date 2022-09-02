@@ -1,7 +1,7 @@
 package com.lind.fast.demo.handler;
 
 import cn.hutool.core.date.DateUtil;
-import com.lind.common.core.captcha.ArithmeticCaptcha;
+import com.lind.plugin.captcha.core.ArithmeticCaptcha;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;

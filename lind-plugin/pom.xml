@@ -25,5 +25,8 @@
         <module>lind-plugin-excel</module>
         <module>lind-plugin-fastdfs</module>
         <module>lind-plugin-captcha</module>
+        <module>lind-plugin-multilevel-cache</module>
+        <module>lind-plugin-log-trace</module>
+        <module>lind-plugin-anti-reptile</module>
     </modules>
 </project>
