@@ -12,6 +12,8 @@
         <module>lind-fast-demo</module>
         <module>lind-common</module>
         <module>lind-common-service</module>
+        <module>lind-plugin</module>
+
     </modules>
 
     <properties>
