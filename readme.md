@@ -9,13 +9,24 @@
   * lind-common-mybatis
   * lind-common-security 安全组件，除了有一些认证与授权的注解外，还包含了feign调用biz服务的声明，对UserDetailsService里loadUserByUsername的实现等
   * lind-common-swagger
+  * lind-common-seata
   * lind-dependency 整个项目的依赖包
 * lind-common-service
   * lind-auth 认证服务，直接提供了简单的认证接口和界面，支持restFul方式的认证，直接返回token 
+  * lind-gateway 服务网关
   * lind-xxl-job-admin 这是任务调度组件xxl-job的实现
   * lind-upms 系统管理模块
     * lind-upms-api 系统管理公开的接口和类
     * lind-upms-biz 系统管理系统
+* lind-plugin
+  * lind-plugin-anti-reptile 反爬
+  * lind-plugin-captcha 验证码
+  * lind-plugin-excel excel的导入与导出
+  * lind-plugin-fastdfs 分布式文件上传
+  * lind-plugin-log-trace 日志跟踪
+  * lind-plugin-multilevel-cache 多级缓存
+  * lind-plugin-oss 对象存储
+
 ## feign请求带上token
 * PigOAuthRequestInterceptor实现了RequestInterceptor拦截器，拦截feign的请求
 * PigOAuthRequestInterceptor里注入BearerTokenResolver解析器，用来从header中将token解释出来

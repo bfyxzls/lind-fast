@@ -2,7 +2,7 @@
  * @author lengleng
  * @date 2022/3/29
  */
-package util;
+package io.seata.spring.util;
 
 import io.seata.common.util.CollectionUtils;
 import io.seata.rm.tcc.remoting.parser.DubboUtil;

@@ -21,5 +21,6 @@
         <module>lind-auth</module>
         <module>lind-gateway</module>
         <module>lind-xxl-job-admin</module>
+        <module>lind-sentinel-dashboard</module>
     </modules>
 </project>
