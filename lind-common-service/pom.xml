@@ -22,5 +22,6 @@
         <module>lind-gateway</module>
         <module>lind-xxl-job-admin</module>
         <module>lind-sentinel-dashboard</module>
+        <module>lind-codegen</module>
     </modules>
 </project>

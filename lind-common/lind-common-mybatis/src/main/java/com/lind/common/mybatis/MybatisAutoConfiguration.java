@@ -76,8 +76,8 @@ public class MybatisAutoConfiguration implements WebMvcConfigurer {
 	 * @return {@link MetaObjectHandler}
 	 */
 	@Bean
-	public MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler() {
-		return new MybatisPlusMetaObjectHandler();
+	public MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler(CurrentAuditor currentAuditor) {
+		return new MybatisPlusMetaObjectHandler(currentAuditor);
 	}
 
 }

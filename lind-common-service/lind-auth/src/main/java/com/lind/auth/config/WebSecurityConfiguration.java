@@ -30,7 +30,7 @@ import org.springframework.security.web.SecurityFilterChain;
  * @author lengleng
  * @date 2022/1/12
  */
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity(debug = false) // debug=true表示调试模式，会打印security的详细日志
 public class WebSecurityConfiguration {
 
 	/**

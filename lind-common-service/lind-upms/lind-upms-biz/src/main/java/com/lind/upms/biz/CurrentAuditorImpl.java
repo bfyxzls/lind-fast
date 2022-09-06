@@ -26,4 +26,9 @@ public class CurrentAuditorImpl implements CurrentAuditor {
     public Long getUserId() {
         return null;
     }
+
+	@Override
+	public String getUserName() {
+		return null;
+	}
 }

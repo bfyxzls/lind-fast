@@ -30,7 +30,7 @@ public class ScrewTest {
 		// 数据源
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		hikariConfig.setJdbcUrl("jdbc:mysql://192.168.4.26:3306/keycloak");
+		hikariConfig.setJdbcUrl("jdbc:mysql://192.168.60.138:3306/nezha");
 		hikariConfig.setUsername("root");
 		hikariConfig.setPassword("123456");
 		// 设置可以获取tables remarks信息
@@ -45,7 +45,7 @@ public class ScrewTest {
 				// 打开目录
 				.openOutputDir(true)
 				// 文件类型
-				.fileType(EngineFileType.MD)
+				.fileType(EngineFileType.HTML)
 				// 生成模板实现
 				.produceType(EngineTemplateType.freemarker).build();
 

@@ -2,41 +2,25 @@ package com.lind.common.mybatis.config;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.lind.common.mybatis.audit.CurrentAuditor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.ClassUtils;
 
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * MybatisPlus 自动填充配置
  *
  * @author L.cm
  */
+@RequiredArgsConstructor
 @Slf4j
 public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
-	@Override
-	public void insertFill(MetaObject metaObject) {
-		log.debug("mybatis plus start insert fill ....");
-		LocalDateTime now = LocalDateTime.now();
-
-		fillValIfNullByName("createTime", now, metaObject, false);
-		fillValIfNullByName("updateTime", now, metaObject, false);
-		fillValIfNullByName("createBy", getUserName(), metaObject, false);
-		fillValIfNullByName("updateBy", getUserName(), metaObject, false);
-	}
-
-	@Override
-	public void updateFill(MetaObject metaObject) {
-		log.debug("mybatis plus start update fill ....");
-		fillValIfNullByName("updateTime", LocalDateTime.now(), metaObject, true);
-		fillValIfNullByName("updateBy", getUserName(), metaObject, true);
-	}
+	private final CurrentAuditor currentAuditor;
 
 	/**
 	 * 填充值，先判断是否有手动设置，优先手动设置的值，例如：job必须手动设置
@@ -63,16 +47,30 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 		}
 	}
 
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		log.debug("mybatis plus start insert fill ....");
+		LocalDateTime now = LocalDateTime.now();
+
+		fillValIfNullByName("createTime", now, metaObject, false);
+		fillValIfNullByName("updateTime", now, metaObject, false);
+		fillValIfNullByName("createBy", getUserName(), metaObject, false);
+		fillValIfNullByName("updateBy", getUserName(), metaObject, false);
+	}
+
+	@Override
+	public void updateFill(MetaObject metaObject) {
+		log.debug("mybatis plus start update fill ....");
+		fillValIfNullByName("updateTime", LocalDateTime.now(), metaObject, true);
+		fillValIfNullByName("updateBy", getUserName(), metaObject, true);
+	}
+
 	/**
 	 * 获取 spring security 当前的用户名
 	 * @return 当前用户名
 	 */
 	private String getUserName() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (Optional.ofNullable(authentication).isPresent()) {
-			return authentication.getName();
-		}
-		return null;
+		return currentAuditor.getUserName();
 	}
 
 }

@@ -6,6 +6,7 @@ import com.lind.common.core.validator.ValidatorUtils;
 import com.lind.common.core.validator.group.AddGroup;
 import com.lind.fast.demo.LindDemoApplication;
 import com.lind.fast.demo.dto.UserDTO;
+import com.lind.fast.demo.entity.TestUser;
 import com.lind.fast.demo.mapper.TestUserMapper;
 import com.lind.fast.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +51,9 @@ public class UserController {
 		return R.ok(testUserMapper.selectTestList());
 	}
 
+	@GetMapping("add")
+	public R add() {
+		helloService.get();
+		return R.ok(testUserMapper.insert(TestUser.builder().name("lind").deptId(1L).build()));
+	}
 }

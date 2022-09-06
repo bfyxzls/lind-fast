@@ -12,12 +12,13 @@
   * lind-common-seata
   * lind-dependency 整个项目的依赖包
 * lind-common-service
-  * lind-auth 认证服务，直接提供了简单的认证接口和界面，支持restFul方式的认证，直接返回token 
-  * lind-gateway 服务网关
-  * lind-xxl-job-admin 这是任务调度组件xxl-job的实现
+  * lind-sentinel-dashboard 9988 断路器
+  * lind-auth 9978 认证服务，直接提供了简单的认证接口和界面，支持restFul方式的认证，直接返回token
+  * lind-gateway 9998 服务网关
+  * lind-xxl-job-admin 9968 这是任务调度组件xxl-job的实现
   * lind-upms 系统管理模块
     * lind-upms-api 系统管理公开的接口和类
-    * lind-upms-biz 系统管理系统
+    * lind-upms-biz 9958 系统管理系统
 * lind-plugin
   * lind-plugin-anti-reptile 反爬
   * lind-plugin-captcha 验证码

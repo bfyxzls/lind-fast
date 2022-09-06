@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 9988
   servlet:
     encoding:
       force: true
@@ -10,7 +10,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+        server-addr: ${NACOS_HOST:192.168.60.138}:${NACOS_PORT:8848}
 
 management:
   endpoints:

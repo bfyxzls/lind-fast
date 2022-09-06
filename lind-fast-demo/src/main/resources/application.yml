@@ -62,7 +62,7 @@ mybatis:
 # Logger Config
 logging:
   level:
-    mybatis.mate: debug
+    mybatis.mate: INFO
 oss:
   endpoint: http://minio.pig4cloud.com
   access-key: lengleng

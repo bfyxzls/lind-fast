@@ -28,7 +28,7 @@ import org.springframework.security.web.SecurityFilterChain;
  * @author lengleng
  * @date 2022/1/12
  */
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity(debug = false)
 public class WebSecurityConfiguration {
 
 	/**

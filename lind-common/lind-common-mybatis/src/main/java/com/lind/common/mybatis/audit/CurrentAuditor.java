@@ -1,6 +1,5 @@
 package com.lind.common.mybatis.audit;
 
-import java.security.PrivateKey;
 import java.util.List;
 
 /**
@@ -24,4 +23,10 @@ public interface CurrentAuditor {
      * @return
      */
     Long getUserId();
+
+	/**
+	 * 当前用户名
+	 * @return
+	 */
+	String getUserName();
 }
