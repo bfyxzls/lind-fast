@@ -16,9 +16,9 @@
 
 package com.lind.gateway.handler;
 
-import com.pig4cloud.captcha.ArithmeticCaptcha;
 import com.lind.common.core.constant.CacheConstants;
 import com.lind.common.core.constant.SecurityConstants;
+import com.lind.plugin.captcha.core.ArithmeticCaptcha;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
@@ -59,8 +59,10 @@ public class ImageCodeHandler implements HandlerFunction<ServerResponse> {
 		// 保存验证码信息
 		Optional<String> randomStr = serverRequest.queryParam("randomStr");
 		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		randomStr.ifPresent(s -> redisTemplate.opsForValue().set(CacheConstants.DEFAULT_CODE_KEY + s, result,
-				SecurityConstants.CODE_TIME, TimeUnit.SECONDS));
+		randomStr.ifPresent(s -> {
+			String key = CacheConstants.DEFAULT_CODE_KEY + s;
+			redisTemplate.opsForValue().set(key, result, SecurityConstants.CODE_TIME, TimeUnit.SECONDS);
+		});
 
 		// 转换流信息写出
 		FastByteArrayOutputStream os = new FastByteArrayOutputStream();

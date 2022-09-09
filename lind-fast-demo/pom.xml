@@ -45,25 +45,7 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-core</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-swagger</artifactId>
-        </dependency>
-        <!--数据源-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-datasource</artifactId>
-        </dependency>
-        <!--orm-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-mybatis</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -120,7 +102,31 @@
             <artifactId>lind-plugin-anti-reptile</artifactId>
             <version>${lind-plugin-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-core</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-swagger</artifactId>
+        </dependency>
+        <!--数据源-->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-datasource</artifactId>
+        </dependency>
+        <!--orm-->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-multilevel-cache</artifactId>
+            <version>${lind-plugin-version}</version>
+
+        </dependency>
         <!-- 数据库文档生成器-->
         <dependency>
             <groupId>cn.smallbun.screw</groupId>
@@ -130,14 +136,6 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 
 </project>

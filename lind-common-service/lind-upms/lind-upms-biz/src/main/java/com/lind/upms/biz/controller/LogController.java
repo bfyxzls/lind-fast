@@ -22,7 +22,7 @@ import com.lind.common.security.annotation.Inner;
 import com.lind.upms.api.dto.SysLogDTO;
 import com.lind.upms.api.entity.SysLog;
 import com.lind.upms.biz.service.SysLogService;
-import com.pig4cloud.plugin.excel.annotation.ResponseExcel;
+import com.lind.plugin.excel.annotation.ResponseExcel;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

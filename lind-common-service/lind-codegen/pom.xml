@@ -17,16 +17,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-
-        <!--注册中心客户端-->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--配置中心客户端-->
+        <!--undertow容器-->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
         <dependency>
@@ -55,36 +53,16 @@
             <artifactId>velocity-tools-generic</artifactId>
             <version>${velocity.tool.version}</version>
         </dependency>
-        <!--undertow容器-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
 
-        <!--日志处理,有common-mybatis的客观引用-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-log</artifactId>
-        </dependency>
-        <!--安全模块,有common-mybatis的客观引用-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-security</artifactId>
-        </dependency>
+
         <!--common-->
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-core</artifactId>
         </dependency>
-        <!--断路器依赖-->
         <dependency>
             <groupId>com.lind</groupId>
-            <artifactId>lind-common-feign</artifactId>
-        </dependency>
-        <!--接口文档-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-swagger</artifactId>
+            <artifactId>lind-common-mybatis</artifactId>
         </dependency>
         <!--数据源-->
         <dependency>

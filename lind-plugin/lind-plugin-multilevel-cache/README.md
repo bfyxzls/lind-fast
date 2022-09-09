@@ -4,11 +4,12 @@
 
 - redis 作为常用中间件，虽然我们一般业务系统（毕竟业务量有限）不会遇到如下图 在随着 data-size 的增大和数据结构的复杂的造成性能下降，但网络 IO 消耗会成为整个调用链路中不可忽视的部分。尤其在 微服务架构中，一次调用往往会涉及多次调用 例如[pig oauth2.0 的 client 认证](https://gitee.com/log4j/pig "pig oauth2.0 的 client 认证")
 
-![](https://gitee.com/pig4cloud/oss/raw/master/2020-9-27/1601165312076-image.png)
+![](./assets/README-1662603370371.png)
 
 - Caffeine 来自未来的本地内存缓存,性能比如常见的内存缓存实现性能高出不少[详细对比](https://github.com/ben-manes/caffeine/wiki/Benchmarks "详细对比")。
 
-![](https://gitee.com/pig4cloud/oss/raw/master/2020-9-27/1601165199107-image.png)
+![](./assets/README-1662603386781.png)
+
 
 **综合所述：我们需要构建 L1 Caffeine JVM 级别内存 ， L2 Redis 内存。**
 
@@ -22,7 +23,7 @@
 
 ## 业务流程
 
-![](https://i.loli.net/2020/09/27/dbMiYhwTBurZK4y.png)
+![](./assets/README-1662603429941.png)
 
 ## 如何使用
 

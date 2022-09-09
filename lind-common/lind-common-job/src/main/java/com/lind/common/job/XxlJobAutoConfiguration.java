@@ -1,7 +1,7 @@
-package com.pig4cloud.pig.common.job;
+package com.lind.common.job;
 
-import com.pig4cloud.pig.common.job.properties.XxlExecutorProperties;
-import com.pig4cloud.pig.common.job.properties.XxlJobProperties;
+import com.lind.common.job.properties.XxlJobProperties;
+import com.lind.common.job.properties.XxlExecutorProperties;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

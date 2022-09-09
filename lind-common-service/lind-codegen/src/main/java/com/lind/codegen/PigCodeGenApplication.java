@@ -23,14 +23,11 @@ import cn.smallbun.screw.core.engine.EngineTemplateType;
 import cn.smallbun.screw.core.execute.DocumentationExecute;
 import cn.smallbun.screw.core.process.ProcessConfig;
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
-import com.lind.common.feign.annotation.EnablePigFeignClients;
-import com.lind.common.security.annotation.EnablePigResourceServer;
-import com.lind.common.swagger.annotation.EnablePigDoc;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -39,18 +36,18 @@ import java.util.ArrayList;
  * @author lengleng
  * @date 2020/03/11 代码生成模块
  */
-@EnablePigDoc
 @EnableDynamicDataSource
-@EnablePigFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
-@EnablePigResourceServer
 public class PigCodeGenApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PigCodeGenApplication.class, args);
 	}
 
+	/**
+	 * 生成数据库文档
+	 * @param args
+	 */
 	public static void genDbDocument(String[] args) {
 		// 数据源
 		HikariConfig hikariConfig = new HikariConfig();

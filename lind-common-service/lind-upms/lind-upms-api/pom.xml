@@ -43,8 +43,8 @@
         </dependency>
         <!-- excel 导入导出 https://github.com/pig-mesh/excel-spring-boot-starter -->
         <dependency>
-            <groupId>com.pig4cloud.excel</groupId>
-            <artifactId>excel-spring-boot-starter</artifactId>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-plugin-excel</artifactId>
         </dependency>
     </dependencies>
 </project>

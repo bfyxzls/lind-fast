@@ -79,7 +79,16 @@
                 <artifactId>lind-common-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.lind</groupId>
+                <artifactId>lind-plugin-captcha</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lind</groupId>
+                <artifactId>lind-plugin-excel</artifactId>
+                <version>1.0.1</version>
+            </dependency>
             <!-- xnio 临时解决方案: #spring-boot/issues/31112 -->
             <dependency>
                 <groupId>org.jboss.xnio</groupId>
@@ -164,12 +173,7 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.9.7</version>
             </dependency>
-            <!-- excel 导入导出 -->
-            <dependency>
-                <groupId>com.pig4cloud.excel</groupId>
-                <artifactId>excel-spring-boot-starter</artifactId>
-                <version>${excel.version}</version>
-            </dependency>
+
         </dependencies>
 
     </dependencyManagement>

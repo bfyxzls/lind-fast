@@ -21,11 +21,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lind.codegen.entity.GenDatasourceConf;
 import com.lind.codegen.service.GenDatasourceConfService;
 import com.lind.common.core.util.R;
-import com.lind.common.log.annotation.SysLog;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,8 +42,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/dsconf")
-@Tag(name = "数据源管理模块")
-@SecurityRequirement(name = HttpHeaders.AUTHORIZATION)
 public class GenDsConfController {
 
 	private final GenDatasourceConfService datasourceConfService;
@@ -87,7 +81,6 @@ public class GenDsConfController {
 	 * @param datasourceConf 数据源表
 	 * @return R
 	 */
-	@SysLog("新增数据源表")
 	@PostMapping
 	public R<Boolean> save(@RequestBody GenDatasourceConf datasourceConf) {
 		return R.ok(datasourceConfService.saveDsByEnc(datasourceConf));
@@ -98,7 +91,6 @@ public class GenDsConfController {
 	 * @param conf 数据源表
 	 * @return R
 	 */
-	@SysLog("修改数据源表")
 	@PutMapping
 	public R<Boolean> updateById(@RequestBody GenDatasourceConf conf) {
 		return R.ok(datasourceConfService.updateDsByEnc(conf));
@@ -109,7 +101,6 @@ public class GenDsConfController {
 	 * @param id id
 	 * @return R
 	 */
-	@SysLog("删除数据源表")
 	@DeleteMapping("/{id}")
 	public R<Boolean> removeById(@PathVariable Long id) {
 		return R.ok(datasourceConfService.removeByDsId(id));

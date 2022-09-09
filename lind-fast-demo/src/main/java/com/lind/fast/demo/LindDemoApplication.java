@@ -8,6 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
@@ -20,6 +21,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableConfigurationProperties(AuthProperties.class) // 开启AuthProperties配置bean
 @MapperScan(basePackages = { "com.lind.fast.demo.mapper" })
 @Slf4j
+@EnableCaching
 // @EnableXxlJob
 // @EnablePigDoc
 public class LindDemoApplication {

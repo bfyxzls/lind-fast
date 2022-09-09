@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: @artifactId@
+  redis:
+    host: localhost
+    database: 1
   cloud:
     nacos:
       discovery:

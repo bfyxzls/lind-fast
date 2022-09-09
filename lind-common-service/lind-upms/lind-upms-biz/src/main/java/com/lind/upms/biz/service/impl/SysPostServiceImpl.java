@@ -20,6 +20,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lind.plugin.excel.vo.ErrorMessage;
 import com.lind.upms.api.entity.SysPost;
 import com.lind.upms.api.vo.PostExcelVO;
 import com.lind.upms.biz.mapper.SysPostMapper;
@@ -27,7 +28,6 @@ import com.lind.upms.biz.service.SysPostService;
 import com.lind.common.core.exception.ErrorCodes;
 import com.lind.common.core.util.MsgUtils;
 import com.lind.common.core.util.R;
-import com.pig4cloud.plugin.excel.vo.ErrorMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
