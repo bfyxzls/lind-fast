@@ -19,6 +19,7 @@ package com.lind.auth.endpoint;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lind.auth.config.AuthProperties;
 import com.lind.upms.api.entity.SysOauthClientDetails;
 import com.lind.upms.api.feign.RemoteClientDetailsService;
 import com.lind.upms.api.vo.TokenVo;
@@ -34,7 +35,10 @@ import com.lind.common.security.util.OAuth2ErrorCodesExpand;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -95,6 +99,8 @@ public class PigTokenEndpoint {
 
 	private final CacheManager cacheManager;
 
+	@Autowired
+	public AuthProperties authProperties;
 	/**
 	 * 认证页面
 	 * @param modelAndView
@@ -103,6 +109,7 @@ public class PigTokenEndpoint {
 	 */
 	@GetMapping("/login")
 	public ModelAndView require(ModelAndView modelAndView, @RequestParam(required = false) String error) {
+		log.info("auth={}",authProperties.getTitle());
 		modelAndView.setViewName("ftl/login");
 		modelAndView.addObject("error", error);
 		return modelAndView;

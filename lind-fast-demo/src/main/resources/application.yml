@@ -6,6 +6,9 @@ spring:
     name: @artifactId@
   profiles:
     active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher #解决重写PermitAllUrlProperties里getPatternsCondition()为空的问题
   cloud:
     nacos:
       discovery:

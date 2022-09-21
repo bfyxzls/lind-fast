@@ -10,7 +10,7 @@
   * lind-common-security 安全组件，除了有一些认证与授权的注解外，还包含了feign调用biz服务的声明，对UserDetailsService里loadUserByUsername的实现等
   * lind-common-swagger
   * lind-common-seata
-  * lind-dependency 整个项目的依赖包
+  * lind-dependency 整个项目的依赖包，和spring-boot-dependencies、spring-cloud-dependencies、spring-cloud-alibaba-dependencies是一个级别的，维护了项目的依赖包版本
 * lind-common-service
   * lind-sentinel-dashboard 9988 断路器
   * lind-auth 9978 认证服务，直接提供了简单的认证接口和界面，支持restFul方式的认证，直接返回token

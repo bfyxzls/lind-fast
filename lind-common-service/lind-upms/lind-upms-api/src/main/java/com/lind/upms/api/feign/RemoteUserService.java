@@ -33,7 +33,7 @@ import java.util.Set;
  * @author lengleng
  * @date 2019/2/1
  */
-@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.UMPS_SERVICE)
+@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.UMPS_SERVICE,url = "http://localhost:9958")
 public interface RemoteUserService {
 
 	/**

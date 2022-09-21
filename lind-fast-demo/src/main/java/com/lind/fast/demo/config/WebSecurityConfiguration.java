@@ -16,11 +16,17 @@
 
 package com.lind.fast.demo.config;
 
+import cn.hutool.core.util.ArrayUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Arrays;
 
 /**
  * 服务安全相关配置
@@ -29,21 +35,27 @@ import org.springframework.security.web.SecurityFilterChain;
  * @date 2022/1/12
  */
 @EnableWebSecurity(debug = false)
+@RequiredArgsConstructor
 public class WebSecurityConfiguration {
 
+	private final PermitAllUrlProperties permitAllUrl;
+
 	/**
-	 * spring security 默认的安全策略
+	 * spring security 默认的安全策略,它要先执行
 	 * @param http security注入点
 	 * @return SecurityFilterChain
 	 * @throws Exception
 	 */
 	@Bean
+	@Order(Ordered.HIGHEST_PRECEDENCE)
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+		permitAllUrl.getUrls()
+				.addAll(Arrays.asList("/anti-reptile/validate", "/plugin/**", "/upload**", "/captcha",
+						"/excel/**", "/code", "/codes", "/doc.html", "/v3/**", "/swagger-ui/**", "/swagger-ui**",
+						"/token/*", "/hello", "/user/**"));
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
-				.antMatchers("/cache/**","/anti-reptile/validate","/plugin/**","/upload**", "/captcha", "/excel/**", "/code", "/codes", "/doc.html", "/v3/**",
-						"/swagger-ui/**", "/swagger-ui**", "/token/*", "/hello", "/user/**")
-				.permitAll()// 开放自定义的部分端点
-				.anyRequest().authenticated()).headers().frameOptions().sameOrigin()// 避免iframe同源无法登录
+				.antMatchers(ArrayUtil.toArray(permitAllUrl.getUrls(), String.class)).permitAll().anyRequest()
+				.authenticated()).headers().frameOptions().sameOrigin()// 避免iframe同源无法登录
 				.and().apply(new FormIdentityLoginConfigurer()); // 表单登录个性化
 		// 处理 UsernamePasswordAuthenticationToken
 		http.authenticationProvider(new PigDaoAuthenticationProvider());

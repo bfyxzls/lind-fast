@@ -89,7 +89,6 @@ public class PigDaoAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
 	@SneakyThrows
 	@Override
-
 	protected final UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) {
 		prepareTimingAttackProtection();
 		HttpServletRequest request = WebUtils.getRequest().orElseThrow(
@@ -99,6 +98,7 @@ public class PigDaoAuthenticationProvider extends AbstractUserDetailsAuthenticat
 		String grantType = paramMap.get(OAuth2ParameterNames.GRANT_TYPE);
 		String clientId = paramMap.get(OAuth2ParameterNames.CLIENT_ID);
 
+		// clientId和clientSecret被放到header的Authentication中，通过Basic认证实现，在登录时使用它进行这两个信息的传递
 		if (StrUtil.isBlank(clientId)) {
 			clientId = basicConvert.convert(request).getName();
 		}

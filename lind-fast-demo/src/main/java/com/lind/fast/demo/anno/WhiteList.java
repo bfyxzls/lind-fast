@@ -14,25 +14,35 @@
  * limitations under the License.
  */
 
-package com.lind.auth;
+package com.lind.fast.demo.anno;
 
-import com.lind.common.feign.annotation.EnablePigFeignClients;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
+ * 服务调用不鉴权注解
+ *
  * @author lengleng
- * @date 2018年06月21日 认证授权中心
+ * @date 2020-06-14
  */
-@EnablePigFeignClients
-@EnableDiscoveryClient
-@SpringBootApplication
-public class PigAuthApplication {
+@Target({ ElementType.METHOD, ElementType.TYPE })
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface WhiteList {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PigAuthApplication.class, args);
-	}
+	/**
+	 * 是否AOP统一处理
+	 * @return false, true
+	 */
+	boolean value() default true;
+
+	/**
+	 * 需要特殊判空的字段(预留)
+	 * @return {}
+	 */
+	String[] field() default {};
 
 }

@@ -18,10 +18,11 @@
 <div class="container form-margin-top">
 	<form class="form-signin" action="/token/form" method="post">
 		<h2 class="form-signin-heading" align="center">统一认证系统</h2>
-		<input type="text" name="client_id" class="form-control" value="pig" placeholder="所属客户端">
-		<input type="text" name="grant_type" class="form-control" value="password" placeholder="所属客户端">
-		<input type="text" name="username" class="form-control form-margin-top" placeholder="账号" value="admin" required autofocus>
-		<input type="text" name="password" class="form-control" placeholder="密码" value="123456" required>
+		<input type="text" name="client_id" class="form-control" value="pig" placeholder="所属客户端"></br>
+		<input type="text" name="client_secret" class="form-control" value="pig" placeholder="所属客户端密钥"></br>
+		<input type="text" name="grant_type" class="form-control" value="password" placeholder="类型"></br>
+		<input type="text" name="username" class="form-control form-margin-top" placeholder="账号" value="admin" required autofocus></br>
+		<input type="text" name="password" class="form-control" placeholder="密码" value="123456" required></br>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">sign in</button>
         <#if error??>
 			<span style="color: red; ">${error}</span>
