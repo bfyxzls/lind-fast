@@ -33,7 +33,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * JacksonConfig
+ * Jackson序列化方式定义
  *
  * @author lengleng
  * @author L.cm

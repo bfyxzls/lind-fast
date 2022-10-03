@@ -39,7 +39,7 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
 	/**
-	 * 增加GET请求参数中时间类型转换 {@link com.pig4cloud.pig.common.core.jackson.PigJavaTimeModule}
+	 * 增加GET请求参数中时间类型转换，否则会出现400x的参数转换问题
 	 * <ul>
 	 * <li>HH:mm:ss -> LocalTime</li>
 	 * <li>yyyy-MM-dd -> LocalDate</li>

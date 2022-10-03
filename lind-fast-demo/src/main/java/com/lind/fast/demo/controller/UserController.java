@@ -1,5 +1,6 @@
 package com.lind.fast.demo.controller;
 
+import cn.hutool.core.date.DateTime;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lind.common.core.util.R;
 import com.lind.common.core.validator.ValidatorUtils;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 
 /**
  * @author lind
@@ -45,8 +49,9 @@ public class UserController {
 	}
 
 	@GetMapping("list")
-	public R dsList() {
+	public R dsList(@RequestParam(required = false) LocalDate fromDate) {
 		LindDemoApplication.set("hello world!");
+		System.out.println("time=" + fromDate);
 		helloService.get();
 		return R.ok(testUserMapper.selectTestList());
 	}
@@ -56,4 +61,5 @@ public class UserController {
 		helloService.get();
 		return R.ok(testUserMapper.insert(TestUser.builder().name("lind").deptId(1L).build()));
 	}
+
 }
