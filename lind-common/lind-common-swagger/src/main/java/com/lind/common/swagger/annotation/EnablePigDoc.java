@@ -16,10 +16,14 @@
 
 package com.lind.common.swagger.annotation;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import com.lind.common.swagger.config.GatewaySwaggerAutoConfiguration;
 import com.lind.common.swagger.config.SwaggerAutoConfiguration;
 import com.lind.common.swagger.support.SwaggerProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -38,8 +42,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
+@EnableKnife4j
 @EnableConfigurationProperties(SwaggerProperties.class)
-@Import({ SwaggerAutoConfiguration.class })
+@Import({ SwaggerAutoConfiguration.class, GatewaySwaggerAutoConfiguration.class })
+@ComponentScan("springfox.documentation.schema")
 public @interface EnablePigDoc {
 
 }

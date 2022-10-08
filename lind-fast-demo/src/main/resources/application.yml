@@ -35,7 +35,10 @@ spring:
     prefer-file-system-access: true
     suffix: .ftl
     template-loader-path: classpath:/templates/
-  redisson.address: redis://localhost:6379
+#  redisson.address: redis://localhost:6379
+knife4j:
+  # 开启增强配置
+  enable: true
 xxl:
   job:
     accessToken: demo
