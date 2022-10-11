@@ -16,7 +16,7 @@ import java.util.UUID;
  * @since 1.0.0
  */
 @Component
-public class UserService implements IUserService {
+public class UserService {
 
 	@Autowired
 	UserMapper userMapper;
@@ -25,7 +25,6 @@ public class UserService implements IUserService {
 	UserAttributeMapper userAttributeMapper;
 
 	@Transactional(rollbackFor = { Exception.class })
-	@Override
 	public void insertUser() {
 		User user = new User();
 		user.setId(UUID.randomUUID().toString());

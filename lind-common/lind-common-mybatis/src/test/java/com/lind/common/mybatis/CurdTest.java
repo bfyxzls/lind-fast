@@ -3,7 +3,6 @@ package com.lind.common.mybatis;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import com.lind.common.mybatis.entity.User;
 import com.lind.common.mybatis.mapper.UserMapper;
-import com.lind.common.mybatis.service.IUserService;
 import com.lind.common.mybatis.service.UserService;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ public class CurdTest {
 	UserMapper userMapper;
 
 	@Autowired
-	IUserService userService;
+	UserService userService;
 
 	@Test
 	public void insert() throws IOException {
