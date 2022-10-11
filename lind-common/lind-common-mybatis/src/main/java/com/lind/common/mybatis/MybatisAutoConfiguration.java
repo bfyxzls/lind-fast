@@ -21,15 +21,26 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.lind.common.mybatis.audit.CurrentAuditor;
+import com.lind.common.mybatis.audit.DefaultCurrentAuditor;
 import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
 import com.lind.common.mybatis.plugins.DeptInterceptor;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
 import com.lind.common.mybatis.resolver.SqlFilterArgumentResolver;
+import com.sun.xml.internal.bind.v2.util.DataSourceSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.support.JdbcTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -48,6 +59,12 @@ public class MybatisAutoConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		argumentResolvers.add(new SqlFilterArgumentResolver());
+	}
+
+	@Bean
+	@ConditionalOnMissingBean(CurrentAuditor.class)
+	public CurrentAuditor defaultCurrentAuditor() {
+		return new DefaultCurrentAuditor();
 	}
 
 	/**
