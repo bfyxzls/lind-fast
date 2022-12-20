@@ -12,10 +12,14 @@
 
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/signin.css" rel="stylesheet">
+	<#import "./common.macro.ftl" as netCommon>
+
 </head>
 
 <body class="sign_body">
 <div class="container form-margin-top">
+
+	<h1>${I18n.sys.dept.deptName.inexistence}</h1>
 	<form class="form-signin" action="/token/form" method="post">
 		<h2 class="form-signin-heading" align="center">统一认证系统</h2>
 		<input type="hidden" name="client_id" class="form-control" value="pig" placeholder="所属客户端">
@@ -26,11 +30,10 @@
         <#if error??>
 			<span style="color: red; ">${error}</span>
         </#if>
+
 	</form>
 </div>
-<footer>
-	<p>support by: pig4cloud</p>
-	<p>email: <a href="mailto:pig4cloud@qq.com">pig4cloud@qq.com</a>.</p>
-</footer>
+<@netCommon.commonFooter />
+
 </body>
 </html>
