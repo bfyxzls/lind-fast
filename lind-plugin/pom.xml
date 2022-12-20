@@ -19,6 +19,8 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mica.auto.version>2.3.1</mica.auto.version>
+
     </properties>
     <modules>
         <module>lind-plugin-oss</module>
@@ -29,4 +31,15 @@
         <module>lind-plugin-log-trace</module>
         <module>lind-plugin-anti-reptile</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.dreamlu</groupId>
+                <artifactId>mica-auto</artifactId>
+                <version>${mica.auto.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

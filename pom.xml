@@ -44,6 +44,8 @@
         <git.commit.plugin>4.9.9</git.commit.plugin>
         <spring.checkstyle.plugin>0.0.32</spring.checkstyle.plugin>
         <springdoc.version>1.6.6</springdoc.version>
+        <mica.auto.version>2.3.1</mica.auto.version>
+
     </properties>
     <!-- 以下依赖 全局所有的模块都会引入  -->
     <dependencies>
@@ -123,6 +125,13 @@
                 <groupId>commons-configuration</groupId>
                 <artifactId>commons-configuration</artifactId>
                 <version>${configuration.version}</version>
+            </dependency>
+            <!-- mica-auto 目前最新的2.3版本也支持Spring Boot 2.7之后推荐使用的 org.springframework.boot.autoconfigure.AutoConfiguration.imports 配置文件的自动生成。-->
+            <dependency>
+                <groupId>net.dreamlu</groupId>
+                <artifactId>mica-auto</artifactId>
+                <version>${mica.auto.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

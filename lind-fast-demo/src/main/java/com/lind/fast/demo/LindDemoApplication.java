@@ -1,6 +1,7 @@
 package com.lind.fast.demo;
 
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
+import com.lind.common.swagger.annotation.EnablePigDoc;
 import com.lind.fast.demo.config.AuthProperties;
 import com.lind.fast.demo.config.PermitAllUrlProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -25,16 +26,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 @Slf4j
 @EnableCaching
 // @EnableXxlJob
-// @EnablePigDoc
+@EnablePigDoc
 public class LindDemoApplication {
 
 	static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(LindDemoApplication.class,
+		SpringApplication.run(LindDemoApplication.class,
 				args);
-		StringEncryptor stringEncryptor = configurableApplicationContext.getBean(StringEncryptor.class);
-		log.info(stringEncryptor.encrypt("123456"));
 	}
 
 	public static void set(String value) {

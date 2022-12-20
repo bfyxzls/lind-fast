@@ -16,7 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <easyexcel.version>3.1.0</easyexcel.version>
-        <mica.version>2.3.1</mica.version>
         <commons-compress>1.21</commons-compress>
     </properties>
     <licenses>
@@ -67,8 +66,6 @@
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-auto</artifactId>
-            <version>${mica.version}</version>
-            <scope>provided</scope>
         </dependency>
         <!-- test -->
         <dependency>

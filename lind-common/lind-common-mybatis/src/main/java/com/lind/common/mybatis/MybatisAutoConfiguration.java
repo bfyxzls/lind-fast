@@ -21,10 +21,12 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.lind.common.mybatis.audit.CurrentAuditor;
+import com.lind.common.mybatis.audit.DefaultCurrentAuditor;
 import com.lind.common.mybatis.config.MybatisPlusMetaObjectHandler;
 import com.lind.common.mybatis.plugins.DeptInterceptor;
 import com.lind.common.mybatis.plugins.PigPaginationInnerInterceptor;
 import com.lind.common.mybatis.resolver.SqlFilterArgumentResolver;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -48,6 +50,12 @@ public class MybatisAutoConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		argumentResolvers.add(new SqlFilterArgumentResolver());
+	}
+
+	@Bean
+	@ConditionalOnMissingBean(CurrentAuditor.class)
+	public CurrentAuditor defaultCurrentAuditor() {
+		return new DefaultCurrentAuditor();
 	}
 
 	/**

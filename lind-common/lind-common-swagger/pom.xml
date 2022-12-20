@@ -29,10 +29,30 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-security</artifactId>
         </dependency>
+        <!--接口文档-->
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.fox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.fox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-oas</artifactId>
+            <version>${swagger.fox.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+
         <!--webflux 相关包-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,6 +75,11 @@
             <artifactId>spring-webmvc</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <!--webflux 相关包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

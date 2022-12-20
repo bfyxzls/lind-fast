@@ -100,7 +100,7 @@ web.xml中配置servlet：
     </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaServlet</servlet-name>
-        <url-pattern>/captcha</url-pattern>
+        <url-pattern>/captcha</url-pattern>
     </servlet-mapping>
 </web-app>
 

@@ -44,6 +44,7 @@ public class PigSecurityInnerAspect implements Ordered {
 
 	private final HttpServletRequest request;
 
+	// @within 对象级别 , @annotation 方法级别
 	@SneakyThrows
 	@Around("@within(inner) || @annotation(inner)")
 	public Object around(ProceedingJoinPoint point, Inner inner) {
