@@ -1,9 +1,12 @@
 package com.lind.fast.demo.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.Resource;
 
 /**
  * @author lind
@@ -26,4 +29,11 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addViewController("/").setViewName("forward:/user-view/index");
 	}
 
+	@Resource
+	private CookieInterceptor cookieInterceptor;
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(cookieInterceptor).addPathPatterns("/**");
+	}
 }

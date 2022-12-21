@@ -9,6 +9,7 @@ import java.util.Locale;
 /**
  * i18n 工具类
  * @UtilityClass所有的方法和属性都会被加上static关键字，并且该类会创建一个私有的空参构造器
+ * 它是支持sys.admin.name这种i18n资源的
  * @author lengleng
  * @date 2022/3/30
  */

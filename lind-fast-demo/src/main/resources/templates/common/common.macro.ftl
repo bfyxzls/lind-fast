@@ -1,6 +1,6 @@
 <#macro commonStyle>
 	<#-- i18n -->
-	<#global I18n = MsgUtils.getMessage()?eval />
+	<#global I18n = I18nUtil.getMultiString()?eval />
 
 </#macro>
 

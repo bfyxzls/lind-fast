@@ -3,7 +3,6 @@ package com.lind.common.core.util;
 import cn.hutool.json.JSONUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
@@ -17,12 +16,13 @@ import java.util.Properties;
 
 /**
  * i18n util
+ * 不支持多级名称，如sys.admin.name，它是不支持的，你需要定义成sys_admin_name.
  *
  * @author xuxueli 2018-01-17 20:39:06
  */
-public class I18nConfigUtil {
+public class I18nUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(I18nConfigUtil.class);
+    private static Logger logger = LoggerFactory.getLogger(I18nUtil.class);
 
     private static Properties prop = null;
 
@@ -60,7 +60,7 @@ public class I18nConfigUtil {
      * @param keys
      * @return
      */
-    public static String getMultString(String... keys) {
+    public static String getMultiString(String... keys) {
         Map<String, String> map = new HashMap<String, String>();
 
         Properties prop = loadI18nProp();

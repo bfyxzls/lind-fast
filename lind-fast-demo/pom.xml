@@ -14,16 +14,7 @@
         <lind-plugin-version>1.0.1</lind-plugin-version>
     </properties>
     <dependencies>
-        <!--注册中心客户端-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <!--配置中心客户端-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
+
         <!-- xxl-job-core -->
         <dependency>
             <groupId>com.lind</groupId>
@@ -100,11 +91,6 @@
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-swagger</artifactId>
         </dependency>
         <!--数据源-->
         <dependency>

@@ -11,12 +11,12 @@ import org.springframework.test.context.TestPropertySource;
  */
 @SpringBootTest(classes = I18nConfig.class)
 @TestPropertySource("classpath:application.properties")  //配置文件注入@Slf4j
-public class I18nConfigUtilTest {
+public class I18NUtilTest {
 
     @Test
     public void I18nConfigUtil() {
         System.out.println(
-                I18nConfigUtil.getString("sys.user.update.passwordError"));
+                I18nUtil.getString("sys.user.update.passwordError"));
     }
 
 }

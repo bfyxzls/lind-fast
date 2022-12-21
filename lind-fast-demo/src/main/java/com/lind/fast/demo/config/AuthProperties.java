@@ -2,7 +2,6 @@ package com.lind.fast.demo.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * @author lind
@@ -10,7 +9,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
  * @since 1.0.0
  */
 @Data
-@RefreshScope
 @ConfigurationProperties("auth")
 public class AuthProperties {
 

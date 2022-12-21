@@ -31,7 +31,7 @@ public class I18nConfig implements InitializingBean, DisposableBean {
 
     }
 
-    @Value("${i18n}")
+    @Value("${i18n:zh_CN}")
     private String i18n;
 
     public String getI18n() {

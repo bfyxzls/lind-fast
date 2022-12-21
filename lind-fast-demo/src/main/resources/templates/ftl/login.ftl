@@ -12,7 +12,7 @@
 
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/signin.css" rel="stylesheet">
-	<#import "./common.macro.ftl" as netCommon>
+	<#import "../common/common.macro.ftl" as netCommon>
 
 </head>
 
