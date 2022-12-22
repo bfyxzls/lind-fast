@@ -18,10 +18,10 @@ package com.lind.common.log.aspect;
 
 import cn.hutool.core.util.StrUtil;
 import com.lind.common.core.util.SpringContextHolder;
- import com.lind.common.log.event.SysLogEvent;
+import com.lind.common.log.entity.SysLog;
+import com.lind.common.log.event.SysLogEvent;
 import com.lind.common.log.util.LogTypeEnum;
 import com.lind.common.log.util.SysLogUtils;
-import com.lind.upms.api.entity.SysLog;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

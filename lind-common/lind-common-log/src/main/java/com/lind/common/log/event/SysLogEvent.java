@@ -16,7 +16,7 @@
 
 package com.lind.common.log.event;
 
-import com.lind.upms.api.entity.SysLog;
+import com.lind.common.log.entity.SysLog;
 import org.springframework.context.ApplicationEvent;
 
 /**

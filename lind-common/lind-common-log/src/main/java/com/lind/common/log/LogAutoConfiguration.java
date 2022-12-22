@@ -16,7 +16,7 @@
 
 package com.lind.common.log;
 
-import com.lind.upms.api.feign.RemoteLogService;
+import com.lind.common.log.service.LogService;
 import com.lind.common.log.aspect.SysLogAspect;
 import com.lind.common.log.event.SysLogListener;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +36,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class LogAutoConfiguration {
 
 	@Bean
-	public SysLogListener sysLogListener(RemoteLogService remoteLogService) {
+	public SysLogListener sysLogListener(LogService remoteLogService) {
 		return new SysLogListener(remoteLogService);
 	}
 

@@ -106,7 +106,11 @@
             <groupId>com.lind</groupId>
             <artifactId>lind-plugin-multilevel-cache</artifactId>
             <version>${lind-plugin-version}</version>
-
+        </dependency>
+        <!--orm-->
+        <dependency>
+            <groupId>com.lind</groupId>
+            <artifactId>lind-common-log</artifactId>
         </dependency>
         <!-- 数据库文档生成器-->
         <dependency>

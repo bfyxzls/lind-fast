@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lind.common.core.util.R;
 import com.lind.common.core.validator.ValidatorUtils;
 import com.lind.common.core.validator.group.AddGroup;
+import com.lind.common.log.annotation.SysLog;
 import com.lind.fast.demo.LindDemoApplication;
 import com.lind.fast.demo.dto.UserDTO;
 import com.lind.fast.demo.entity.TestUser;
@@ -56,10 +57,11 @@ public class UserController {
 		return R.ok(testUserMapper.selectTestList());
 	}
 
-	@GetMapping("add")
-	public R add() {
+	@SysLog(value = "添加用户",expression = "#userDTO.username")
+	@PostMapping("add")
+	public R add(@RequestBody  UserDTO userDTO) {
 		helloService.get();
-		return R.ok(testUserMapper.insert(TestUser.builder().name("lind").deptId(1L).build()));
+		return R.ok(testUserMapper.insert(TestUser.builder().name(userDTO.getUsername()).deptId(1L).build()));
 	}
 
 }

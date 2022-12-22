@@ -24,7 +24,6 @@
         <module>lind-dependency</module>
         <module>lind-common-security</module>
         <module>lind-common-feign</module>
-        <module>lind-common-swagger</module>
         <module>lind-common-log</module>
         <module>lind-common-seata</module>
 

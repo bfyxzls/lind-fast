@@ -24,15 +24,14 @@
             <groupId>com.lind</groupId>
             <artifactId>lind-common-core</artifactId>
         </dependency>
-        <!--UPMS接口模块-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-upms-api</artifactId>
-        </dependency>
         <!--安全依赖获取上下文信息-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
     </dependencies>
 </project>

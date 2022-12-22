@@ -19,7 +19,7 @@ package com.lind.common.log.util;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpUtil;
-import com.lind.upms.api.entity.SysLog;
+import com.lind.common.log.entity.SysLog;
 import lombok.experimental.UtilityClass;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.expression.EvaluationContext;

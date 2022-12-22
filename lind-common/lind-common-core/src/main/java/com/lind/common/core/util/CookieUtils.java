@@ -82,7 +82,7 @@ public class CookieUtils {
 
         //老版浏览器
         if (sameSite == "NONE") {
-            addCookie(name, value, path, domain, maxAge, secure, httpOnly, null);
+            addCookie(name + LEGACY_COOKIE, value, path, domain, maxAge, secure, httpOnly, null);
         }
     }
 

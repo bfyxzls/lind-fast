@@ -16,8 +16,8 @@
 
 package com.lind.common.log.event;
 
-import com.lind.upms.api.entity.SysLog;
-import com.lind.upms.api.feign.RemoteLogService;
+import com.lind.common.log.entity.SysLog;
+import com.lind.common.log.service.LogService;
 import com.lind.common.core.constant.SecurityConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ import org.springframework.scheduling.annotation.Async;
 @RequiredArgsConstructor
 public class SysLogListener {
 
-	private final RemoteLogService remoteLogService;
+	private final LogService remoteLogService;
 
 	@Async
 	@Order
