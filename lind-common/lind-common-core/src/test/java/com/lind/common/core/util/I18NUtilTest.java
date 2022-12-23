@@ -9,7 +9,7 @@ import org.springframework.test.context.TestPropertySource;
  * @date 2022/7/26 11:06
  * @since 1.0.0
  */
-@SpringBootTest(classes = I18nConfig.class)
+@SpringBootTest()
 @TestPropertySource("classpath:application.properties")  //配置文件注入@Slf4j
 public class I18NUtilTest {
 

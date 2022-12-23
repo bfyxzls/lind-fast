@@ -1,6 +1,7 @@
 package com.lind.common.core.util;
 
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,7 +18,13 @@ import java.util.concurrent.TimeUnit;
  * @date 2022/7/29 8:56
  * @since 1.0.0
  */
+@Slf4j
 public class ThreadPoolTest {
+
+	@Test
+	public void cpu() {
+		log.info("cpu={}", Runtime.getRuntime().availableProcessors());
+	}
 
 	@Test
 	public void pool() {
@@ -52,7 +59,7 @@ public class ThreadPoolTest {
 			ts.add(new Thread(() -> {
 				int i1 = 0;
 				while (perTheadTask.size() < n && i1++ < n / m) { // q2.size()
-										// 非线程安全，所以设置每个线程添加平均个数，防止poll出null报错
+					// 非线程安全，所以设置每个线程添加平均个数，防止poll出null报错
 					perTheadTask.add(q1.poll());
 				}
 			}));

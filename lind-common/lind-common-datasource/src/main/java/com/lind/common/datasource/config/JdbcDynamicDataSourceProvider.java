@@ -64,7 +64,8 @@ public class JdbcDynamicDataSourceProvider extends AbstractJdbcDataSourceProvide
 			DataSourceProperty property = new DataSourceProperty();
 			property.setUsername(username);
 			property.setLazy(true);
-			property.setPassword(stringEncryptor.decrypt(password));//动态数据源配置在数据表中，它也是加密的，所以连接时需要解密
+			// property.setPassword(stringEncryptor.decrypt(password));//动态数据源配置在数据表中，它也是加密的，所以连接时需要解密
+			property.setPassword(password);// 动态数据源配置在数据表中，它也是加密的，所以连接时需要解密
 			property.setUrl(url);
 			map.put(name, property);
 		}

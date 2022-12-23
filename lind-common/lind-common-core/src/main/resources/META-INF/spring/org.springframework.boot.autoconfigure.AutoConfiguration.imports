@@ -4,4 +4,3 @@ com.lind.common.core.config.RedisTemplateConfiguration
 com.lind.common.core.config.RestTemplateConfiguration
 com.lind.common.core.util.SpringContextHolder
 com.lind.common.core.config.WebMvcConfiguration
-com.lind.common.core.util.I18nConfig

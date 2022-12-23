@@ -1,8 +1,8 @@
 package com.lind.fast.demo.controller;
 
-import cn.hutool.core.date.DateTime;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lind.common.core.util.R;
+import com.lind.common.core.util.WebUtils;
 import com.lind.common.core.validator.ValidatorUtils;
 import com.lind.common.core.validator.group.AddGroup;
 import com.lind.common.log.annotation.SysLog;
@@ -11,6 +11,7 @@ import com.lind.fast.demo.dto.UserDTO;
 import com.lind.fast.demo.entity.TestUser;
 import com.lind.fast.demo.mapper.TestUserMapper;
 import com.lind.fast.demo.service.HelloService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import java.time.LocalDate;
  * @date 2022/7/15 10:58
  * @since 1.0.0
  */
+@Slf4j
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -57,9 +59,10 @@ public class UserController {
 		return R.ok(testUserMapper.selectTestList());
 	}
 
-	@SysLog(value = "添加用户",expression = "#userDTO.username")
+	@SysLog(value = "添加用户", expression = "#userDTO.username")
 	@PostMapping("add")
-	public R add(@RequestBody  UserDTO userDTO) {
+	public R add(@RequestBody UserDTO userDTO) {
+		log.info("client:{}", WebUtils.getClientId());
 		helloService.get();
 		return R.ok(testUserMapper.insert(TestUser.builder().name(userDTO.getUsername()).deptId(1L).build()));
 	}
