@@ -34,11 +34,6 @@
             <groupId>com.lind</groupId>
             <artifactId>lind-common-security</artifactId>
         </dependency>
-        <!--接口文档-->
-        <dependency>
-            <groupId>com.lind</groupId>
-            <artifactId>lind-common-swagger</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.lind</groupId>
             <artifactId>lind-common-log</artifactId>
