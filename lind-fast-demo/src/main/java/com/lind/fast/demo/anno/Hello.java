@@ -13,9 +13,11 @@ import java.lang.annotation.Target;
  * @since 1.0.0
  */
 @Documented
-@Target({ElementType.METHOD})
+@Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Hello {
-    String value();
+
+	String value();
+
 }

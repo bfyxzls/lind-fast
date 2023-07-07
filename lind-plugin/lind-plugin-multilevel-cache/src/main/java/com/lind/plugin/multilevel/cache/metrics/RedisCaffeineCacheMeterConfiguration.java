@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Configure
- * {@link CacheMeterBinderProvider} beans.
+ * Configure {@link CacheMeterBinderProvider} beans.
  *
  * @author L.cm
  */

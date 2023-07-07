@@ -10,9 +10,11 @@ import lombok.Data;
  */
 @Data
 public class Demo {
-    @ExcelProperty(index = 0)
-    private String username;
 
-    @ExcelProperty(index = 1)
-    private String password;
+	@ExcelProperty(index = 0)
+	private String username;
+
+	@ExcelProperty(index = 1)
+	private String password;
+
 }

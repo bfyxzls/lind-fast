@@ -56,11 +56,15 @@ import java.util.concurrent.ExecutionException;
 public class ParamFlowRuleController {
 
 	private final Logger logger = LoggerFactory.getLogger(ParamFlowRuleController.class);
+
 	private final SentinelVersion version020 = new SentinelVersion().setMinorVersion(2);
+
 	@Autowired
 	private SentinelApiClient sentinelApiClient;
+
 	@Autowired
 	private AppManagement appManagement;
+
 	@Autowired
 	private RuleRepository<ParamFlowRuleEntity, Long> repository;
 

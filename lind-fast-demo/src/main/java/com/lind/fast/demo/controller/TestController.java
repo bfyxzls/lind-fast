@@ -40,7 +40,6 @@ public class TestController {
 	@Autowired
 	AuthProperties authProperties;
 
-
 	@GetMapping("hello")
 	@PreAuthorize("@helloService.get()")
 	public R hello() {
@@ -91,7 +90,5 @@ public class TestController {
 		// 输出图片流
 		specCaptcha.out(response.getOutputStream());
 	}
-
-
 
 }

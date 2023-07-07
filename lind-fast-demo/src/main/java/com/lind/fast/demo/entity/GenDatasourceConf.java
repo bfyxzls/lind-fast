@@ -31,36 +31,36 @@ import lombok.Data;
 @TableName("gen_datasource_conf")
 public class GenDatasourceConf {
 
-    /**
-     * 主键
-     */
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+	/**
+	 * 主键
+	 */
+	@TableId(type = IdType.ASSIGN_ID)
+	private Long id;
 
-    /**
-     * 名称
-     */
-    private String name;
+	/**
+	 * 名称
+	 */
+	private String name;
 
-    /**
-     * jdbcurl
-     */
-    private String url;
+	/**
+	 * jdbcurl
+	 */
+	private String url;
 
-    /**
-     * 用户名
-     */
-    private String username;
+	/**
+	 * 用户名
+	 */
+	private String username;
 
-    /**
-     * 密码
-     */
-    private String password;
+	/**
+	 * 密码
+	 */
+	private String password;
 
-    /**
-     * 删除标记
-     */
-    @TableLogic
-    private String delFlag;
+	/**
+	 * 删除标记
+	 */
+	@TableLogic
+	private String delFlag;
 
 }

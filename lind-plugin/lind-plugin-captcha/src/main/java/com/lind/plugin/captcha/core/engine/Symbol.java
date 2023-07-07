@@ -27,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Symbol {
+
 	/**
 	 * 标识符
 	 */

@@ -9,5 +9,7 @@ import com.lind.common.log.entity.SysLog;
  * @since 1.0.0
  */
 public interface LogService {
-   void saveLog(SysLog sysLog, String from);
+
+	void saveLog(SysLog sysLog, String from);
+
 }

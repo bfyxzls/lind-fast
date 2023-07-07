@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableXxlJob
 public class XxlJobAdminApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(XxlJobAdminApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(XxlJobAdminApplication.class, args);
+	}
 
 }

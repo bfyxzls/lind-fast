@@ -11,9 +11,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class AuthConfig {
-    @Bean
-    @RefreshScope
-    public AuthProperties authProperties(){
-        return new AuthProperties();
-    }
+
+	@Bean
+	@RefreshScope
+	public AuthProperties authProperties() {
+		return new AuthProperties();
+	}
+
 }

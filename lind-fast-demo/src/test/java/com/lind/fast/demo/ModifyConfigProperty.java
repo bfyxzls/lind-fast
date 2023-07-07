@@ -6,8 +6,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest()
 public class ModifyConfigProperty {
-    @Test
-    public void read(){
-        System.out.println(System.getProperty("logging.file.name"));
-    }
+
+	@Test
+	public void read() {
+		System.out.println(System.getProperty("logging.file.name"));
+	}
+
 }

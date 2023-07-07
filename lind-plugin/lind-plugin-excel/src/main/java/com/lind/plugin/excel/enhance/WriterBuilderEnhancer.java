@@ -24,7 +24,7 @@ public interface WriterBuilderEnhancer {
 	 * @return ExcelWriterBuilder
 	 */
 	ExcelWriterBuilder enhanceExcel(ExcelWriterBuilder writerBuilder, HttpServletResponse response,
-									ResponseExcel responseExcel, String templatePath);
+			ResponseExcel responseExcel, String templatePath);
 
 	/**
 	 * ExcelWriterSheetBuilder 增强

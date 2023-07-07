@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
 @ConfigurationProperties(prefix = "security.oauth2.ignore")
 public class PermitAllUrlProperties implements InitializingBean {
 
-	private static final Pattern PATTERN = Pattern.compile("\\{(.*?)\\}");//处理带有路径参数，如/hello/{name}会替换成/hello/*
+	private static final Pattern PATTERN = Pattern.compile("\\{(.*?)\\}");// 处理带有路径参数，如/hello/{name}会替换成/hello/*
 
 	@Getter
 	@Setter

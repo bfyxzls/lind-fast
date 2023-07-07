@@ -73,11 +73,15 @@ username=admin&password=YehdBPev
 ![image.png](./assets/README-1663212012045.png)
 如上图在登录请求中会携带 Basic base64(clientId:clientSecret)， 那么首先OAuth2ClientAuthenticationFilter 会通过调用 RegisteredClientRepository  (数据库存储) 来判断传入的客户端是否正确
 ## 3正式接收登录请求
-OAuth2TokenEndpointFilter 会接收通过上文 OAuth2ClientAuthenticationFilter 客户端认证的请求
+OAuth2TokenEndpointFilter 会接收通过上文 OAuth2ClientAuthenticationFilter 客户端认证的请求,实现令牌颁发功能的拦截器就是OAuth2TokenEndpointFilter。
+1. 判断此次请求是否是 “令牌颁发” 请求，若是，则继续下面逻辑，否则跳过
+2. 解析请求中的参数，构建成一个 Authentication
+3. 对 Authentication 进行处理
+4. 到这一步说明access_token生成好了， 将access_token和相关信息响应给请求方。
 ![image.png](./assets/README-1663212091734.png)
 
 ## 4 组装认证对象
-AuthenticationConverter  会根据请求中的参数和授权类型组装成对应的授权认证对象
+AuthenticationConverter会根据请求中的参数和授权类型组装成对应的授权认证对象;每种认证策略实际上就是一个 AuthenticationConverter 实现类 加上一个 AuthenticationProvider实现类
 ![image-1.png](./assets/README-1663212099130.png)
 
 
@@ -109,7 +113,7 @@ public class XXXAuthenticationToken extends OAuth2ResourceOwnerBaseAuthenticatio
 
 用户查询逻辑的多种实现形式
 ● 解耦： 通过feign 查询其他系统获取并组装成 UserDetails
-● 简单:    认证中心直接查询DB 并组装成 UserDetails
+● 简单:  认证中心直接查询DB 并组装成 UserDetails
 ![image.png](./assets/README-1663212185799.png)
 
 ## 12 密码校验逻辑
@@ -137,7 +141,7 @@ return new UserDetails(user.getUsername(),"{bcrypt}"+"数据库存储的密文")
 ## 15登录成功事件处
 ![image.png](./assets/README-1663212297236.png)
 
-## 16 请求结果输出Toke
+## 16 请求结果输出Token
 ```
 private void sendAccessTokenResponse(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException {

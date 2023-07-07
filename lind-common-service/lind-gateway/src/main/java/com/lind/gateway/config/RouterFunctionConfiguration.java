@@ -34,7 +34,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @date 2020-06-11
  */
 @Slf4j
-@Configuration(proxyBeanMethods = false)// proxyBeanMethods为false,WebConfig使用jdk代理，而proxyBeanMethods为true时，使用CGLIB代理
+@Configuration(proxyBeanMethods = false) // proxyBeanMethods为false,WebConfig使用jdk代理，而proxyBeanMethods为true时，使用CGLIB代理
 @RequiredArgsConstructor
 public class RouterFunctionConfiguration {
 

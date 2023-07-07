@@ -35,8 +35,10 @@ import static org.springframework.util.Assert.notNull;
 public class FileUtils {
 
 	public static final String OBJ_NO_NULL = "对象不能为空";
+
 	private static final File SYSTEM_TEMP_DIR = SystemUtils.tempDir();
 	static Function<String, String> resourceFun;
+
 	/**
 	 * 系统的临时文件夹
 	 */

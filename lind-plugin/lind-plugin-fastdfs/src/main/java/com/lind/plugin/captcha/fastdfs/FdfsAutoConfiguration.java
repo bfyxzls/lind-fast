@@ -21,61 +21,60 @@ import com.luhuiguo.fastdfs.service.TrackerClient;
 @EnableConfigurationProperties(FdfsProperties.class)
 public class FdfsAutoConfiguration {
 
-    private final FdfsProperties properties;
+	private final FdfsProperties properties;
 
-    public FdfsAutoConfiguration(FdfsProperties properties) {
-        super();
-        this.properties = properties;
-    }
+	public FdfsAutoConfiguration(FdfsProperties properties) {
+		super();
+		this.properties = properties;
+	}
 
-    @Bean
-    public PooledConnectionFactory pooledConnectionFactory() {
-        PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory();
-        pooledConnectionFactory.setSoTimeout(properties.getSoTimeout());
-        pooledConnectionFactory.setConnectTimeout(properties.getConnectTimeout());
-        return pooledConnectionFactory;
-    }
+	@Bean
+	public PooledConnectionFactory pooledConnectionFactory() {
+		PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory();
+		pooledConnectionFactory.setSoTimeout(properties.getSoTimeout());
+		pooledConnectionFactory.setConnectTimeout(properties.getConnectTimeout());
+		return pooledConnectionFactory;
+	}
 
+	@Bean
+	@ConfigurationProperties(prefix = "fdfs.pool")
+	public ConnectionPoolConfig connectionPoolConfig() {
+		ConnectionPoolConfig connectionPoolConfig = new ConnectionPoolConfig();
+		return connectionPoolConfig;
+	}
 
-    @Bean
-    @ConfigurationProperties(prefix = "fdfs.pool")
-    public ConnectionPoolConfig connectionPoolConfig() {
-        ConnectionPoolConfig connectionPoolConfig = new ConnectionPoolConfig();
-        return connectionPoolConfig;
-    }
+	@Bean
+	public FdfsConnectionPool fdfsConnectionPool(PooledConnectionFactory pooledConnectionFactory,
+			ConnectionPoolConfig connectionPoolConfig) {
+		FdfsConnectionPool pool = new FdfsConnectionPool(pooledConnectionFactory, connectionPoolConfig);
+		return pool;
+	}
 
-    @Bean
-    public FdfsConnectionPool fdfsConnectionPool(PooledConnectionFactory pooledConnectionFactory,
-                                                 ConnectionPoolConfig connectionPoolConfig) {
-        FdfsConnectionPool pool = new FdfsConnectionPool(pooledConnectionFactory, connectionPoolConfig);
-        return pool;
-    }
+	@Bean
+	public TrackerConnectionManager trackerConnectionManager(FdfsConnectionPool fdfsConnectionPool) {
+		return new TrackerConnectionManager(fdfsConnectionPool, properties.getTrackerList());
+	}
 
-    @Bean
-    public TrackerConnectionManager trackerConnectionManager(FdfsConnectionPool fdfsConnectionPool) {
-        return new TrackerConnectionManager(fdfsConnectionPool, properties.getTrackerList());
-    }
+	@Bean
+	public TrackerClient trackerClient(TrackerConnectionManager trackerConnectionManager) {
+		return new DefaultTrackerClient(trackerConnectionManager);
+	}
 
-    @Bean
-    public TrackerClient trackerClient(TrackerConnectionManager trackerConnectionManager) {
-        return new DefaultTrackerClient(trackerConnectionManager);
-    }
+	@Bean
+	public ConnectionManager connectionManager(FdfsConnectionPool fdfsConnectionPool) {
+		return new ConnectionManager(fdfsConnectionPool);
+	}
 
-    @Bean
-    public ConnectionManager connectionManager(FdfsConnectionPool fdfsConnectionPool) {
-        return new ConnectionManager(fdfsConnectionPool);
-    }
+	@Bean
+	public FastFileStorageClient fastFileStorageClient(TrackerClient trackerClient,
+			ConnectionManager connectionManager) {
+		return new DefaultFastFileStorageClient(trackerClient, connectionManager);
+	}
 
-    @Bean
-    public FastFileStorageClient fastFileStorageClient(TrackerClient trackerClient,
-                                                       ConnectionManager connectionManager) {
-        return new DefaultFastFileStorageClient(trackerClient, connectionManager);
-    }
-
-    @Bean
-    public AppendFileStorageClient appendFileStorageClient(TrackerClient trackerClient,
-                                                           ConnectionManager connectionManager) {
-        return new DefaultAppendFileStorageClient(trackerClient, connectionManager);
-    }
+	@Bean
+	public AppendFileStorageClient appendFileStorageClient(TrackerClient trackerClient,
+			ConnectionManager connectionManager) {
+		return new DefaultAppendFileStorageClient(trackerClient, connectionManager);
+	}
 
 }

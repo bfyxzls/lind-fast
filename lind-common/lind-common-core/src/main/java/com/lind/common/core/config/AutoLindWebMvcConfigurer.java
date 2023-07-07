@@ -34,17 +34,15 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
 @ConditionalOnWebApplication(type = SERVLET)
 public class AutoLindWebMvcConfigurer {
 
-
-    /**
-     * 系统国际化文件配置
-     *
-     * @return MessageSource
-     */
-    @Bean("messageSource")
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:i18n/messages");
-        return messageSource;
-    }
+	/**
+	 * 系统国际化文件配置
+	 * @return MessageSource
+	 */
+	@Bean("messageSource")
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+		messageSource.setBasename("classpath:i18n/messages");
+		return messageSource;
+	}
 
 }

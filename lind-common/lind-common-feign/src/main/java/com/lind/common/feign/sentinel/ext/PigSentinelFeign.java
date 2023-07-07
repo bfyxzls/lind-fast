@@ -89,6 +89,7 @@ public final class PigSentinelFeign {
 
 					Object fallbackInstance;
 					FallbackFactory<?> fallbackFactoryInstance;
+					// fallback返回值如果不是void
 					if (void.class != fallback) {
 						fallbackInstance = getFromContext(beanName, "fallback", fallback, target.type());
 						return new PigSentinelInvocationHandler(target, dispatch,

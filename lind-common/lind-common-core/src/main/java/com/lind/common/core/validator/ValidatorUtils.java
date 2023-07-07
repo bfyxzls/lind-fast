@@ -29,29 +29,30 @@ import java.util.Set;
  */
 public class ValidatorUtils {
 
-    private static ResourceBundleMessageSource getMessageSource() {
-        ResourceBundleMessageSource bundleMessageSource = new ResourceBundleMessageSource();
-        bundleMessageSource.setDefaultEncoding("UTF-8");
-        bundleMessageSource.setBasenames("i18n/validation");
-        return bundleMessageSource;
-    }
+	private static ResourceBundleMessageSource getMessageSource() {
+		ResourceBundleMessageSource bundleMessageSource = new ResourceBundleMessageSource();
+		bundleMessageSource.setDefaultEncoding("UTF-8");
+		bundleMessageSource.setBasenames("i18n/validation");
+		return bundleMessageSource;
+	}
 
-    /**
-     * 校验对象
-     * @param object        待校验对象
-     * @param groups        待校验的组,只将指定了这个组的验证行为执行
-     */
-    public static void validateEntity(Object object, Class<?>... groups)
-            throws ValidateCodeException {
-        Locale.setDefault(LocaleContextHolder.getLocale());
-        Validator validator = Validation.byDefaultProvider().configure().messageInterpolator(
-                new ResourceBundleMessageInterpolator(new MessageSourceResourceBundleLocator(getMessageSource())))
-                .buildValidatorFactory().getValidator();
+	/**
+	 * 校验对象
+	 * @param object 待校验对象
+	 * @param groups 待校验的组,只将指定了这个组的验证行为执行
+	 */
+	public static void validateEntity(Object object, Class<?>... groups) throws ValidateCodeException {
+		Locale.setDefault(LocaleContextHolder.getLocale());
+		Validator validator = Validation.byDefaultProvider().configure()
+				.messageInterpolator(new ResourceBundleMessageInterpolator(
+						new MessageSourceResourceBundleLocator(getMessageSource())))
+				.buildValidatorFactory().getValidator();
 
-        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object, groups);
-        if (!constraintViolations.isEmpty()) {
-            ConstraintViolation<Object> constraint = constraintViolations.iterator().next();
-            throw new ValidateCodeException(constraint.getMessage());
-        }
-    }
+		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object, groups);
+		if (!constraintViolations.isEmpty()) {
+			ConstraintViolation<Object> constraint = constraintViolations.iterator().next();
+			throw new ValidateCodeException(constraint.getMessage());
+		}
+	}
+
 }

@@ -34,7 +34,8 @@ public class RouterFunctionConfiguration {
 	}
 
 	@Bean("helloService")
-	public HelloService helloService(){
+	public HelloService helloService() {
 		return new HelloService();
 	}
+
 }

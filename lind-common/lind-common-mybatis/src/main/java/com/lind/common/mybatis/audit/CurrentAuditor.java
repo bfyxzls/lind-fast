@@ -8,25 +8,27 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface CurrentAuditor {
-    /**
-     * 部门数据权限
-     */
-      List<Long> getDeptIdList();
 
-    /**
-     * 是否为管理员
-     */
-      Boolean getSuperAdmin();
+	/**
+	 * 部门数据权限
+	 */
+	List<Long> getDeptIdList();
 
-    /**
-     * 当前用户id
-     * @return
-     */
-    Long getUserId();
+	/**
+	 * 是否为管理员
+	 */
+	Boolean getSuperAdmin();
+
+	/**
+	 * 当前用户id
+	 * @return
+	 */
+	Long getUserId();
 
 	/**
 	 * 当前用户名
 	 * @return
 	 */
 	String getUserName();
+
 }

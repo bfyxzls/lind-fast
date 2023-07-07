@@ -29,7 +29,7 @@ public class SpringDocConfiguration {
 	public List<GroupedOpenApi> apis(SwaggerUiConfigParameters swaggerUiConfigParameters,
 			SwaggerDocProperties swaggerProperties) {
 		List<GroupedOpenApi> groups = new ArrayList<>();
-		if(swaggerProperties.getServices()!=null) {
+		if (swaggerProperties.getServices() != null) {
 			for (String value : swaggerProperties.getServices().values()) {
 				swaggerUiConfigParameters.addGroup(value);
 			}

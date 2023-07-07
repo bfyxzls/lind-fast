@@ -13,23 +13,25 @@ import java.util.List;
  */
 @Component
 public class CurrentAuditorImpl implements CurrentAuditor {
-    @Override
-    public List<Long> getDeptIdList() {
-        return Arrays.asList(1L,2L,3L);
-    }
 
-    @Override
-    public Boolean getSuperAdmin() {
-        return false;
-    }
+	@Override
+	public List<Long> getDeptIdList() {
+		return Arrays.asList(1L, 2L, 3L);
+	}
 
-    @Override
-    public Long getUserId() {
-        return 1L;
-    }
+	@Override
+	public Boolean getSuperAdmin() {
+		return false;
+	}
+
+	@Override
+	public Long getUserId() {
+		return 1L;
+	}
 
 	@Override
 	public String getUserName() {
 		return "lind";
 	}
+
 }

@@ -19,7 +19,7 @@ import java.util.Set;
  *
  * 密码认证转换器
  */
-public class  OAuth2ResourceOwnerPasswordAuthenticationConverter
+public class OAuth2ResourceOwnerPasswordAuthenticationConverter
 		extends OAuth2ResourceOwnerBaseAuthenticationConverter<OAuth2ResourceOwnerPasswordAuthenticationToken> {
 
 	/**

@@ -40,7 +40,7 @@ public interface GeneratorMapper {
 	 * @return
 	 */
 	@DS("#last")
-	IPage<List<Map<String, Object>>> queryAll(@Param("tableName") String tableName,Page page,String dsName);
+	IPage<List<Map<String, Object>>> queryAll(@Param("tableName") String tableName, Page page, String dsName);
 
 	/**
 	 * 查询表信息

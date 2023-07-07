@@ -1,4 +1,5 @@
 package com.lind.fast.demo.config;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 

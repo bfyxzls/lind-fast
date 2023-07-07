@@ -74,9 +74,9 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory<Obje
 				return chain.filter(exchange);
 			}
 
-			String clientId=WebUtils.getClientId(request);
+			String clientId = WebUtils.getClientId(request);
 			boolean isIgnoreClient = configProperties.getIgnoreClients().contains(clientId);
-			System.out.println("clientId="+clientId+",isIgnoreClient="+isIgnoreClient);
+			System.out.println("clientId=" + clientId + ",isIgnoreClient=" + isIgnoreClient);
 			try {
 				// only oauth and the request not in ignore clients need check code.
 				if (!isIgnoreClient) {

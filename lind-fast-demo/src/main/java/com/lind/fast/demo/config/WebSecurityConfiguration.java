@@ -50,9 +50,10 @@ public class WebSecurityConfiguration {
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		permitAllUrl.getUrls()
-				.addAll(Arrays.asList("/css/**","/index","/","/anti-reptile/validate", "/plugin/**", "/upload**", "/captcha",
-						"/excel/**", "/code", "/codes", "/doc.html", "/v3/**", "/swagger-ui/**", "/swagger-ui**",
-						"/token/*", "/hello", "/user/**","/v2/api-docs/**","/doc.html","/webjars/**","/swagger-resources**","/user-view/**"));
+				.addAll(Arrays.asList("/css/**", "/index", "/", "/anti-reptile/validate", "/plugin/**", "/upload**",
+						"/captcha", "/excel/**", "/code", "/codes", "/doc.html", "/v3/**", "/swagger-ui/**",
+						"/swagger-ui**", "/token/*", "/hello", "/user/**", "/v2/api-docs/**", "/doc.html",
+						"/webjars/**", "/swagger-resources**", "/user-view/**"));
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
 				.antMatchers(ArrayUtil.toArray(permitAllUrl.getUrls(), String.class)).permitAll().anyRequest()
 				.authenticated()).headers().frameOptions().sameOrigin()// 避免iframe同源无法登录

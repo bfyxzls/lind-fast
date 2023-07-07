@@ -31,4 +31,5 @@ public class UserAttribute extends BaseEntity {
 
 	@NotBlank(message = "值不能为空")
 	private String value;
+
 }

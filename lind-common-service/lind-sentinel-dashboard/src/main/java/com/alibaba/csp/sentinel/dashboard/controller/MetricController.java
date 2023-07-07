@@ -45,7 +45,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MetricController {
 
 	private static final long maxQueryIntervalMs = 1000 * 60 * 60;
+
 	private static Logger logger = LoggerFactory.getLogger(MetricController.class);
+
 	@Autowired
 	private MetricsRepository<MetricEntity> metricStore;
 

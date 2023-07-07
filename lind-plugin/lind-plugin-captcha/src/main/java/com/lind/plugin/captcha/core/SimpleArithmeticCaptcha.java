@@ -127,7 +127,7 @@ public class SimpleArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 				}
 			}
 		}
-		chars =  String.valueOf(AviatorEvaluator.execute(sb.toString()));
+		chars = String.valueOf(AviatorEvaluator.execute(sb.toString()));
 
 		int parseInt = Integer.parseInt(chars);
 		if (parseInt < 0) {

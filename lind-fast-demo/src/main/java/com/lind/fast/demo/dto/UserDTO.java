@@ -17,17 +17,19 @@ import javax.validation.constraints.Null;
  */
 @Data
 public class UserDTO {
-    @Null(message = "{id.null}", groups = AddGroup.class)
-    @NotNull(message = "{id.require}", groups = UpdateGroup.class)
-    private Long id;
 
-    @NotBlank(message = "{name.require}", groups = DefaultGroup.class)
-    private String username;
+	@Null(message = "{id.null}", groups = AddGroup.class)
+	@NotNull(message = "{id.require}", groups = UpdateGroup.class)
+	private Long id;
 
-    @NotBlank(message = "{phone.require}", groups = AddGroup.class)
-    private String phone;
+	@NotBlank(message = "{name.require}", groups = DefaultGroup.class)
+	private String username;
 
-    @NotBlank(message = "{email.require}", groups = AddGroup.class)
-    @Email(message = "{email.error}", groups = DefaultGroup.class)
-    private String email;
+	@NotBlank(message = "{phone.require}", groups = AddGroup.class)
+	private String phone;
+
+	@NotBlank(message = "{email.require}", groups = AddGroup.class)
+	@Email(message = "{email.error}", groups = DefaultGroup.class)
+	private String email;
+
 }

@@ -12,18 +12,22 @@ import java.lang.reflect.Method;
  * @since 1.0.0
  */
 public class ClassUtilsTest {
-    @Target({ElementType.METHOD})
-    public @interface TestAnno{
-        String value() default "";
 
-    }
-    @TestAnno("lind")
-    public void print(){
-        System.out.println("hello");
-    }
+	@Target({ ElementType.METHOD })
+	public @interface TestAnno {
 
-    @Test
-    public void getAnnotation(){
+		String value() default "";
 
-    }
+	}
+
+	@TestAnno("lind")
+	public void print() {
+		System.out.println("hello");
+	}
+
+	@Test
+	public void getAnnotation() {
+
+	}
+
 }

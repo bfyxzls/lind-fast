@@ -7,10 +7,12 @@ import com.lind.plugin.captcha.core.engine.Symbol;
  * 算术验证码抽象类 Created by 王帆 on 2019-08-23 上午 10:08.
  */
 public abstract class ArithmeticCaptchaAbstract extends Captcha {
+
 	// 计算公式
 	private String arithmeticString;
 
 	protected static int difficulty = 10;
+
 	protected static int algorithmSign = 4;
 
 	public ArithmeticCaptchaAbstract() {
@@ -19,7 +21,6 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 
 	/**
 	 * 生成随机验证码
-	 *
 	 * @return 验证码字符数组
 	 */
 	@Override
@@ -31,9 +32,11 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 				int type = num(1, algorithmSign);
 				if (type == 1) {
 					sb.append(Symbol.ADD.getValue());
-				} else if (type == 2) {
+				}
+				else if (type == 2) {
 					sb.append(Symbol.SUB.getValue());
-				} else if (type == 3) {
+				}
+				else if (type == 3) {
 					sb.append(Symbol.MUL.getValue());
 				}
 			}
@@ -59,9 +62,7 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 	}
 
 	/**
-	 * algorithmSign
-	 * 2 : 支持加法 algorithmSign 3 : 支持加减法 algorithmSign 4 : 支持加减乘法
-	 *
+	 * algorithmSign 2 : 支持加法 algorithmSign 3 : 支持加减法 algorithmSign 4 : 支持加减乘法
 	 * @param algorithmSign 计算公式标示
 	 */
 	public void supportAlgorithmSign(int algorithmSign) {

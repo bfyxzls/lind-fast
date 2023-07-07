@@ -20,25 +20,25 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 @EnableDynamicDataSource
-@EnableConfigurationProperties({AuthProperties.class, PermitAllUrlProperties.class}) // 开启AuthProperties配置bean
-@MapperScan(basePackages = {"com.lind.fast.demo.mapper"})
+@EnableConfigurationProperties({ AuthProperties.class, PermitAllUrlProperties.class }) // 开启AuthProperties配置bean
+@MapperScan(basePackages = { "com.lind.fast.demo.mapper" })
 @Slf4j
 @EnableCaching
 // @EnableXxlJob
 public class LindDemoApplication {
 
-    static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();
+	static final InheritableThreadLocal<String> dic = new InheritableThreadLocal<>();
 
-    public static void main(String[] args) {
-        SpringApplication.run(LindDemoApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(LindDemoApplication.class, args);
+	}
 
-    public static void set(String value) {
-        dic.set(value);
-    }
+	public static void set(String value) {
+		dic.set(value);
+	}
 
-    public static String get() {
-        return dic.get();
-    }
+	public static String get() {
+		return dic.get();
+	}
 
 }

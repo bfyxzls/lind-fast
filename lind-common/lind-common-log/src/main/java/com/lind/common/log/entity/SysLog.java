@@ -63,5 +63,4 @@ public class SysLog {
 	 */
 	private String serviceId;
 
-
 }

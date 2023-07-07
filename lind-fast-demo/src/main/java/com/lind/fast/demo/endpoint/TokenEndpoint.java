@@ -46,6 +46,7 @@ public class TokenEndpoint {
 					httpResponse);
 		}
 	};
+
 	/**
 	 * 认证页面
 	 * @param modelAndView
@@ -58,6 +59,7 @@ public class TokenEndpoint {
 		modelAndView.addObject("error", error);
 		return modelAndView;
 	}
+
 	@SneakyThrows
 	@GetMapping("/check_token")
 	public void checkToken(String token, HttpServletResponse response, HttpServletRequest request) {

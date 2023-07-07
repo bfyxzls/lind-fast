@@ -43,107 +43,103 @@ import java.sql.SQLException;
 @Service
 @RequiredArgsConstructor
 public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfMapper, GenDatasourceConf>
-        implements GenDatasourceConfService {
+		implements GenDatasourceConfService {
 
-    private final StringEncryptor stringEncryptor;
+	private final StringEncryptor stringEncryptor;
 
-    private final DataSourceCreator hikariDataSourceCreator;
+	private final DataSourceCreator hikariDataSourceCreator;
 
-    /**
-     * 保存数据源并且加密
-     *
-     * @param conf
-     * @return
-     */
-    @Override
-    public Boolean saveDsByEnc(GenDatasourceConf conf) {
-        // 校验配置合法性
-        if (!checkDataSource(conf)) {
-            return Boolean.FALSE;
-        }
+	/**
+	 * 保存数据源并且加密
+	 * @param conf
+	 * @return
+	 */
+	@Override
+	public Boolean saveDsByEnc(GenDatasourceConf conf) {
+		// 校验配置合法性
+		if (!checkDataSource(conf)) {
+			return Boolean.FALSE;
+		}
 
-        // 添加动态数据源
-        addDynamicDataSource(conf);
+		// 添加动态数据源
+		addDynamicDataSource(conf);
 
-        // 更新数据库配置
-        conf.setPassword(stringEncryptor.encrypt(conf.getPassword()));
-        this.baseMapper.insert(conf);
-        return Boolean.TRUE;
-    }
+		// 更新数据库配置
+		conf.setPassword(stringEncryptor.encrypt(conf.getPassword()));
+		this.baseMapper.insert(conf);
+		return Boolean.TRUE;
+	}
 
-    /**
-     * 更新数据源
-     *
-     * @param conf 数据源信息
-     * @return
-     */
-    @Override
-    public Boolean updateDsByEnc(GenDatasourceConf conf) {
-        if (!checkDataSource(conf)) {
-            return Boolean.FALSE;
-        }
-        // 先移除
-        SpringContextHolder.getBean(DynamicRoutingDataSource.class)
-                .removeDataSource(baseMapper.selectById(conf.getId()).getName());
+	/**
+	 * 更新数据源
+	 * @param conf 数据源信息
+	 * @return
+	 */
+	@Override
+	public Boolean updateDsByEnc(GenDatasourceConf conf) {
+		if (!checkDataSource(conf)) {
+			return Boolean.FALSE;
+		}
+		// 先移除
+		SpringContextHolder.getBean(DynamicRoutingDataSource.class)
+				.removeDataSource(baseMapper.selectById(conf.getId()).getName());
 
-        // 再添加
-        addDynamicDataSource(conf);
+		// 再添加
+		addDynamicDataSource(conf);
 
-        // 更新数据库配置
-        if (StrUtil.isNotBlank(conf.getPassword())) {
-            conf.setPassword(stringEncryptor.encrypt(conf.getPassword()));
-        }
-        this.baseMapper.updateById(conf);
-        return Boolean.TRUE;
-    }
+		// 更新数据库配置
+		if (StrUtil.isNotBlank(conf.getPassword())) {
+			conf.setPassword(stringEncryptor.encrypt(conf.getPassword()));
+		}
+		this.baseMapper.updateById(conf);
+		return Boolean.TRUE;
+	}
 
-    /**
-     * 通过数据源名称删除
-     *
-     * @param dsId 数据源ID
-     * @return
-     */
-    @Override
-    public Boolean removeByDsId(Long dsId) {
-        SpringContextHolder.getBean(DynamicRoutingDataSource.class)
-                .removeDataSource(baseMapper.selectById(dsId).getName());
-        this.baseMapper.deleteById(dsId);
-        return Boolean.TRUE;
-    }
+	/**
+	 * 通过数据源名称删除
+	 * @param dsId 数据源ID
+	 * @return
+	 */
+	@Override
+	public Boolean removeByDsId(Long dsId) {
+		SpringContextHolder.getBean(DynamicRoutingDataSource.class)
+				.removeDataSource(baseMapper.selectById(dsId).getName());
+		this.baseMapper.deleteById(dsId);
+		return Boolean.TRUE;
+	}
 
-    /**
-     * 添加动态数据源
-     *
-     * @param conf 数据源信息
-     */
-    @Override
-    public void addDynamicDataSource(GenDatasourceConf conf) {
-        DataSourceProperty dataSourceProperty = new DataSourceProperty();
-        dataSourceProperty.setPoolName(conf.getName());
-        dataSourceProperty.setUrl(conf.getUrl());
-        dataSourceProperty.setUsername(conf.getUsername());
-        dataSourceProperty.setPassword(conf.getPassword());
-        dataSourceProperty.setLazy(true);
-        DataSource dataSource = hikariDataSourceCreator.createDataSource(dataSourceProperty);
-        SpringContextHolder.getBean(DynamicRoutingDataSource.class).addDataSource(dataSourceProperty.getPoolName(),
-                dataSource);
-    }
+	/**
+	 * 添加动态数据源
+	 * @param conf 数据源信息
+	 */
+	@Override
+	public void addDynamicDataSource(GenDatasourceConf conf) {
+		DataSourceProperty dataSourceProperty = new DataSourceProperty();
+		dataSourceProperty.setPoolName(conf.getName());
+		dataSourceProperty.setUrl(conf.getUrl());
+		dataSourceProperty.setUsername(conf.getUsername());
+		dataSourceProperty.setPassword(conf.getPassword());
+		dataSourceProperty.setLazy(true);
+		DataSource dataSource = hikariDataSourceCreator.createDataSource(dataSourceProperty);
+		SpringContextHolder.getBean(DynamicRoutingDataSource.class).addDataSource(dataSourceProperty.getPoolName(),
+				dataSource);
+	}
 
-    /**
-     * 校验数据源配置是否有效
-     *
-     * @param conf 数据源信息
-     * @return 有效/无效
-     */
-    @Override
-    public Boolean checkDataSource(GenDatasourceConf conf) {
-        try {
-            DriverManager.getConnection(conf.getUrl(), conf.getUsername(), conf.getPassword());
-        } catch (SQLException e) {
-            log.error("数据源配置 {} , 获取链接失败", conf.getName(), e);
-            return Boolean.FALSE;
-        }
-        return Boolean.TRUE;
-    }
+	/**
+	 * 校验数据源配置是否有效
+	 * @param conf 数据源信息
+	 * @return 有效/无效
+	 */
+	@Override
+	public Boolean checkDataSource(GenDatasourceConf conf) {
+		try {
+			DriverManager.getConnection(conf.getUrl(), conf.getUsername(), conf.getPassword());
+		}
+		catch (SQLException e) {
+			log.error("数据源配置 {} , 获取链接失败", conf.getName(), e);
+			return Boolean.FALSE;
+		}
+		return Boolean.TRUE;
+	}
 
 }

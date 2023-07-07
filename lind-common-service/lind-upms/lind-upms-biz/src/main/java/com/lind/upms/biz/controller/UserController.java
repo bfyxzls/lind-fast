@@ -156,7 +156,7 @@ public class UserController {
 	 * @param userDto 用户信息
 	 * @return success/false
 	 */
-	@SysLog(value = "添加用户",expression = "#userDto.deptId")
+	@SysLog(value = "添加用户", expression = "#userDto.deptId")
 	@PostMapping
 	@PreAuthorize("@pms.hasPermission('sys_user_add')")
 	public R<Boolean> user(@RequestBody UserDTO userDto) {

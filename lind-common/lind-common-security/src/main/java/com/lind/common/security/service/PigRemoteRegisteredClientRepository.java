@@ -84,13 +84,13 @@ public class PigRemoteRegisteredClientRepository implements RegisteredClientRepo
 	@SneakyThrows
 	@Cacheable(value = CacheConstants.CLIENT_DETAILS_KEY, key = "#clientId", unless = "#result == null")
 	public RegisteredClient findByClientId(String clientId) {
-		R<SysOauthClientDetails> r =clientDetailsService.getClientDetailsById(clientId, SecurityConstants.FROM_IN);
-		System.out.println("details:"+r.getData());
-		if(r.getData()!=null)
-		   System.out.println("details.id:"+r.getData().getClientId());
+		R<SysOauthClientDetails> r = clientDetailsService.getClientDetailsById(clientId, SecurityConstants.FROM_IN);
+		System.out.println("details:" + r.getData());
+		if (r.getData() != null)
+			System.out.println("details.id:" + r.getData().getClientId());
 		SysOauthClientDetails clientDetails = RetOps
 				.of(clientDetailsService.getClientDetailsById(clientId, SecurityConstants.FROM_IN))
-				.assertDataNotNull(result -> new OAuthClientException("clientId 不合法,"+clientId)).getData().get();
+				.assertDataNotNull(result -> new OAuthClientException("clientId 不合法," + clientId)).getData().get();
 
 		RegisteredClient.Builder builder = RegisteredClient.withId(clientDetails.getClientId())
 				.clientId(clientDetails.getClientId())

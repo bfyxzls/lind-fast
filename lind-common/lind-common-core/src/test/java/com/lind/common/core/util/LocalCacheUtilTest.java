@@ -16,7 +16,7 @@ public class LocalCacheUtilTest {
 	@Test
 	public void getAndExpire() {
 		LocalCacheUtil.set("test", new Date(), 20000);
-		while (LocalCacheUtil.get("test")!= null) {
+		while (LocalCacheUtil.get("test") != null) {
 			System.out.println(LocalCacheUtil.get("test"));
 			Thread.sleep(1000);
 		}

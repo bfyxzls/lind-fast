@@ -51,7 +51,7 @@ public class PigDaoAuthenticationProvider extends AbstractUserDetailsAuthenticat
 	private UserDetailsPasswordService userDetailsPasswordService;
 
 	public PigDaoAuthenticationProvider() {
-	//	setMessageSource(SpringUtil.getBean("securityMessageSource"));
+		// setMessageSource(SpringUtil.getBean("securityMessageSource"));
 		setPasswordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
 	}
 
@@ -83,42 +83,42 @@ public class PigDaoAuthenticationProvider extends AbstractUserDetailsAuthenticat
 	@Override
 
 	protected final UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) {
-	return new UserDetails() {
-		@Override
-		public Collection<? extends GrantedAuthority> getAuthorities() {
-			return null;
-		}
+		return new UserDetails() {
+			@Override
+			public Collection<? extends GrantedAuthority> getAuthorities() {
+				return null;
+			}
 
-		@Override
-		public String getPassword() {
-			return null;
-		}
+			@Override
+			public String getPassword() {
+				return null;
+			}
 
-		@Override
-		public String getUsername() {
-			return null;
-		}
+			@Override
+			public String getUsername() {
+				return null;
+			}
 
-		@Override
-		public boolean isAccountNonExpired() {
-			return false;
-		}
+			@Override
+			public boolean isAccountNonExpired() {
+				return false;
+			}
 
-		@Override
-		public boolean isAccountNonLocked() {
-			return false;
-		}
+			@Override
+			public boolean isAccountNonLocked() {
+				return false;
+			}
 
-		@Override
-		public boolean isCredentialsNonExpired() {
-			return false;
-		}
+			@Override
+			public boolean isCredentialsNonExpired() {
+				return false;
+			}
 
-		@Override
-		public boolean isEnabled() {
-			return false;
-		}
-	};
+			@Override
+			public boolean isEnabled() {
+				return false;
+			}
+		};
 	}
 
 	@Override

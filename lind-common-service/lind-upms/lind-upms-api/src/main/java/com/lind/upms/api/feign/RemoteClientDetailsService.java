@@ -34,7 +34,8 @@ import java.util.List;
  * @author lengleng
  * @date 2020/12/05
  */
-@FeignClient(contextId = "remoteClientDetailsService", value = ServiceNameConstants.UMPS_SERVICE,url = "http://localhost:9958")
+@FeignClient(contextId = "remoteClientDetailsService", value = ServiceNameConstants.UMPS_SERVICE,
+		url = "http://localhost:9958")
 public interface RemoteClientDetailsService {
 
 	/**

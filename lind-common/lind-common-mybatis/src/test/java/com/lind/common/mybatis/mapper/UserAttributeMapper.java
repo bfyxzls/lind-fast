@@ -9,4 +9,5 @@ import com.lind.common.mybatis.entity.UserAttribute;
  * @since 1.0.0
  */
 public interface UserAttributeMapper extends BaseMapper<UserAttribute> {
+
 }

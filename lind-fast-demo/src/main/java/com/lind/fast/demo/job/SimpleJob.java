@@ -15,12 +15,14 @@ import java.util.Date;
  */
 @Component
 public class SimpleJob {
-    static Logger logger = LoggerFactory.getLogger(SimpleJob.class);
 
-    @XxlJob("testDemoJobHandler")
-    public ReturnT<String> testDemoJobHandler(String param) throws Exception {
-        System.out.println(new Date() + " testJobHandler hello");
-        Thread.sleep(10000);
-        return ReturnT.SUCCESS;
-    }
+	static Logger logger = LoggerFactory.getLogger(SimpleJob.class);
+
+	@XxlJob("testDemoJobHandler")
+	public ReturnT<String> testDemoJobHandler(String param) throws Exception {
+		System.out.println(new Date() + " testJobHandler hello");
+		Thread.sleep(10000);
+		return ReturnT.SUCCESS;
+	}
+
 }

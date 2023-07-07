@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 配置-热更新
+ *
  * @author lind
  * @date 2022/9/21 13:42
  * @since 1.0.0
@@ -15,5 +16,7 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties("auth")
 public class AuthProperties {
-    private String title;
+
+	private String title;
+
 }

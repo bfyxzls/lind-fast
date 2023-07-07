@@ -13,14 +13,15 @@ import org.springframework.context.annotation.Configuration;
  * <p>
  * 验证码配置类，不需要再写spring.factories了
  */
-@Configuration(proxyBeanMethods = false)//proxyBeanMethods = false,springboot2.2之后的默认值，提高Spring启动速度
+@Configuration(proxyBeanMethods = false) // proxyBeanMethods =
+											// false,springboot2.2之后的默认值，提高Spring启动速度
 @EnableConfigurationProperties(CaptchaProperties.class)
 public class CaptchaAutoConfiguration {
 
-    @Bean
-    @ConditionalOnWebApplication
-    public CaptchaEndpoint captchaEndpoint(CaptchaProperties properties) {
-        return new CaptchaEndpoint(properties);
-    }
+	@Bean
+	@ConditionalOnWebApplication
+	public CaptchaEndpoint captchaEndpoint(CaptchaProperties properties) {
+		return new CaptchaEndpoint(properties);
+	}
 
 }

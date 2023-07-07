@@ -56,13 +56,13 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addInterceptor(authorizationInterceptor).addPathPatterns("/**");
 	}
 
-	//资源URL与本地路径映射
+	// 资源URL与本地路径映射
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/resources/");
 	}
 
-	//view的url重写
+	// view的url重写
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("forward:/index.htm");

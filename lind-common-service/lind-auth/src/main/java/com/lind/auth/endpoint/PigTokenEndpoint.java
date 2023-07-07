@@ -101,6 +101,7 @@ public class PigTokenEndpoint {
 
 	@Autowired
 	public AuthProperties authProperties;
+
 	/**
 	 * 认证页面
 	 * @param modelAndView
@@ -109,7 +110,7 @@ public class PigTokenEndpoint {
 	 */
 	@GetMapping("/login")
 	public ModelAndView require(ModelAndView modelAndView, @RequestParam(required = false) String error) {
-		log.info("auth={}",authProperties.getTitle());
+		log.info("auth={}", authProperties.getTitle());
 		modelAndView.setViewName("ftl/login");
 		modelAndView.addObject("error", error);
 		return modelAndView;
