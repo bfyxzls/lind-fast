@@ -9,11 +9,11 @@ import lombok.Data;
  * @since 1.0.0
  */
 @Data
-@TableName("user")
+@TableName("t_user")
 public class User {
 
-	Integer id;
+	Long id;
 
-	String name;
+	String username;
 
 }

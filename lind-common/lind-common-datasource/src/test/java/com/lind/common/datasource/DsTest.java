@@ -1,27 +1,33 @@
 package com.lind.common.datasource;
 
 import com.lind.common.datasource.annotation.EnableDynamicDataSource;
+import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @author lind
  * @date 2022/12/23 10:05
  * @since 1.0.0
  */
-@SpringBootApplication
+@SpringBootTest
 @EnableDynamicDataSource
 @MapperScan("com.lind.common.datasource.mapper")
 public class DsTest {
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(DsTest.class, args);
-		UserServiceImpl userService1 = configurableApplicationContext.getBean(UserServiceImpl.class);
+	@Autowired
+	UserServiceImpl userService;
+
+	@Test
+	public void read() {
+		// ConfigurableApplicationContext configurableApplicationContext =
+		// SpringApplication.run(DsTest.class, args);
+		// UserServiceImpl userService1 =
+		// configurableApplicationContext.getBean(UserServiceImpl.class);
 		System.out.println("打印数据用户");
-		userService1.get().forEach(o -> {
-			System.out.println(o.getName());
+		userService.get().forEach(o -> {
+			System.out.println(o.getUsername());
 		});
 	}
 

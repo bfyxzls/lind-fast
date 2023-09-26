@@ -20,8 +20,12 @@ public class UserServiceImpl {
 	@Autowired
 	UserMapper userMapper;
 
-	@DS("slave_1")
 	public List<User> get() {
+		return userMapper.selectList(new QueryWrapper<>());
+	}
+
+	@DS("slave_1")
+	public List<User> getSlave() {
 		return userMapper.selectList(new QueryWrapper<>());
 	}
 
