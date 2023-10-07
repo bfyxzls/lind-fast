@@ -1,9 +1,13 @@
 package com.lind.common.mybatis;
 
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lind.common.mybatis.entity.User;
 import com.lind.common.mybatis.mapper.UserMapper;
 import com.lind.common.mybatis.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
@@ -27,6 +31,7 @@ import java.util.UUID;
 		MybatisPlusAutoConfiguration.class, DataSource.class, SqlSessionFactory.class,
 		DataSourceTransactionManagerAutoConfiguration.class, UserService.class })
 @MapperScan(basePackages = "com.lind.common.mybatis.mapper")
+@Slf4j
 public class CurdTest {
 
 	@Autowired
@@ -53,6 +58,15 @@ public class CurdTest {
 		// 事务需要在新的bean中，不需要在单元测试中直接使用@Transactional
 		// 使用@Transactional注解都是用在类的方法上。官网也不建议使用在接口类上面，注解肯定都是用到了aop的思想，即使用了动态代理。而如果使用cglib动态代理肯定没有办法代理接口类
 		userService.insertUser();
+	}
+
+	@Test
+	public void getPage() throws IOException {
+		Page page = new Page();
+		page.setCurrent(1);
+		page.setSize(10);
+		IPage<User> users = userMapper.selectPage(page, Wrappers.emptyWrapper());
+		log.info("{}", users);
 	}
 
 }
